@@ -1,0 +1,13 @@
+{% load bittags %}
+<div class="chart {% if bits == 0 %}chart--large{% else %}chart--small{% endif %} ">
+  <div class="chart__text">{% if bits == 0 %}All instructions{% else %}{{bits}} Bit IWords{% endif %}<br><div style="font-size: 0.7em;">({{icount}} instructions)</div></div>
+  <div class="chart__donut">
+    <div style="border-spacing: 0px 0px;">
+      <div>
+        <div class="percent">{{percent}} %</div>
+        <div class="ratio">({{relevant}} / {{faults}})</div>
+      </div>
+    </div>
+    <canvas id="chart-relevance-{{bits}}"{% if bits == 0 %} width="180" height="180"{% else %} width="120" height="120"{% endif %}></canvas>
+  </div>
+</div>

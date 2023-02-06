@@ -1,0 +1,58 @@
+{% load static %}
+{% load bittags %}
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			extensions: ["tex2jax.js"],
+			jax: ["input/TeX","output/HTML-CSS"],
+			tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+		});
+	</script>
+	<script type="text/javascript" src="{% static 'js/underscore-min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/d3.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/myd3.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/mathjax/MathJax.js' %}?config=TeX-MML-AM_CHTML"></script>
+	<!--<script type="text/javascript" src="{% static 'js/chartjs/Chart.js' %}"></script>-->
+	<script type="text/javascript" src="{% static 'js/chartjs/Chart.bundle.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery/jquery-3.1.1.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery/ui/jquery-ui.js' %}"></script>
+
+	<link rel="stylesheet" href="{% static 'js/jquery/ui/jquery-ui.css' %}">
+	
+	<link rel="stylesheet" href="{% url 'css' 'baselayout.css' %}">
+	<link rel="stylesheet" href="{% static 'css/Chart.css' %}">
+
+	<!--<link rel="stylesheet" href="{% static 'css/w3.css' %}">
+	<link rel="stylesheet" href="{% static 'css/w3-theme-dark-grey.css' %}">-->
+
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="96x96" href="{% static 'images/favicon-96x96.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+	{% block css %}{% endblock %}
+	<title>{% block title %}Prozessorbaustelle{% endblock %}</title>
+</head>
+
+<body>
+
+	<header>
+		<a href="{% url 'architecture' arch.id %}" style="text-decoration:none; color: white;">{{arch.name}} Instruction Set Analysis</a>
+	</header>
+
+	{% include "include/nav.html" %}
+
+	<section class="common_content">
+		{% block body %}{% endblock %}
+	</section>
+
+	<footer>Paderborn University / System and Circuit Technology &copy; 2021 - Peer Adelt</footer>
+
+	{% block scripts %}{% endblock %}
+
+</body>
+</html>

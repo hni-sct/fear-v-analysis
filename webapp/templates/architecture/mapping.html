@@ -1,0 +1,118 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+{% load bittags %}
+
+{% block title %}Architecture overview for {{arch.name}}{% endblock %}
+
+{% block body %}
+<style>
+  table { width: 100%; margin-bottom: 25px; }
+  td { border: 1px solid black; text-align: left; }
+  th { border: 1px solid black; text-align: left; font-weight: bold; }
+</style>
+
+<h1>QEMU to RTL mapping for architecture {{ arch.name }}</h1>
+
+<h1>Registers</h1>
+
+<h3>General Purpose Registers (GPRs)</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>QEmu</th>
+    <th>RTL</th>
+  </tr>
+
+{% for g in gprs %}
+<tr>
+  <td>{{g.name}}</td>
+  <td>{{g.qemu_reference}}</td>
+  <td>{{g.rtl_reference}}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% if fprs %}
+<h3>Floating Point Registers (FPRs)</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>QEmu</th>
+    <th>RTL</th>
+  </tr>
+
+{% for f in fprs %}
+<tr>
+  <td>{{f.name}}</td>
+  <td>{{f.qemu_reference}}</td>
+  <td>{{f.rtl_reference}}</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+<h3>Configuration and Status Registers (CSRs)</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>QEmu</th>
+    <th>RTL</th>
+  </tr>
+
+{% for c in csrs %}
+<tr>
+  <td>{{c.name}}</td>
+  <td>{{c.number|hex:12}}</td>
+  <td>{{c.qemu_reference}}</td>
+  <td>{{c.rtl_reference}}</td>
+</tr>
+{% endfor %}
+</table>
+
+<h3>Device CSRs (Memory-mapped)</h3>
+<table>
+  <tr>
+    <th>Device</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Bits</th>
+    <th>QEmu</th>
+    <th>RTL</th>
+  </tr>
+
+{% for dcsr in dev_csrs %}
+<tr>
+  <td>{{dcsr.device.name}}</td>
+  <td>{{dcsr.name}}</td>
+  <td>{{dcsr.number|hex:32}}</td>
+  <td>{{dcsr.bits}}</td>
+  <td>{{dcsr.qemu_reference}}</td>
+  <td>{{dcsr.rtl_reference}}</td>
+</tr>
+{% endfor %}
+</table>
+
+<h3>Memory Regions (RAM, ROM)</h3>
+<table>
+  <tr>
+    <th>Device</th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>From</th>
+    <th>To</th>
+  </tr>
+
+{% for mr in mem_regions %}
+<tr>
+  <td>{{mr.device.name}}</td>
+  <td>{{mr.name}}</td>
+  <td>{{mr.memtype}}</td>
+  <td>{{mr.addr_from|hex:32}}</td>
+  <td>{{mr.addr_to|hex:32}}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

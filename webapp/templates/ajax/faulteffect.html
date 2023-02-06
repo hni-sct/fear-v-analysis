@@ -1,0 +1,20 @@
+{% load bittags %}
+
+<table>
+	<tr>
+		<td style="vertical-align:top;"><b>Opcode:</b></td>
+		<td>{{opcode}} {{newinsn|safe}}</td>
+	</tr>
+	<tr>
+		<td style="vertical-align:top;"><b>Parameters:</b></td>
+		<td>
+{% if parameters|length == 0 %}
+No parameters are affected.
+{% else %}
+{% for p in parameters %}
+{{p.name}} ({{p.optype}})<br>
+{% endfor %}
+{% endif %}
+		</td>
+	</tr>
+</table>

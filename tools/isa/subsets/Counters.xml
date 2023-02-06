@@ -1,0 +1,68 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="Counters">
+  <!-- Counters - According to Unprivileged Spec. 20191213 -->
+  <Csr Number="0xC00" Access="RO" Name="cycle" Description="User cycle counter" Qemu="cpu_get_host_ticks()[31:0]" />
+  <Csr Number="0xC01" Access="RO" Name="time" Description="Time counter" />
+  <Csr Number="0xC02" Access="RO" Name="instret" Description="User instructions-retired counter" Qemu="cpu_get_host_ticks()[31:0]" />
+  <Csr Number="0xC03" Access="RO" Name="hpmcounter3" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC04" Access="RO" Name="hpmcounter4" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC05" Access="RO" Name="hpmcounter5" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC06" Access="RO" Name="hpmcounter6" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC07" Access="RO" Name="hpmcounter7" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC08" Access="RO" Name="hpmcounter8" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC09" Access="RO" Name="hpmcounter9" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC0A" Access="RO" Name="hpmcounter10" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC0B" Access="RO" Name="hpmcounter11" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC0C" Access="RO" Name="hpmcounter12" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC0D" Access="RO" Name="hpmcounter13" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC0E" Access="RO" Name="hpmcounter14" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC0F" Access="RO" Name="hpmcounter15" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC10" Access="RO" Name="hpmcounter16" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC11" Access="RO" Name="hpmcounter17" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC12" Access="RO" Name="hpmcounter18" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC13" Access="RO" Name="hpmcounter19" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC14" Access="RO" Name="hpmcounter20" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC15" Access="RO" Name="hpmcounter21" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC16" Access="RO" Name="hpmcounter22" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC17" Access="RO" Name="hpmcounter23" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC18" Access="RO" Name="hpmcounter24" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC19" Access="RO" Name="hpmcounter25" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC1A" Access="RO" Name="hpmcounter26" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC1B" Access="RO" Name="hpmcounter27" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC1C" Access="RO" Name="hpmcounter28" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC1D" Access="RO" Name="hpmcounter29" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC1E" Access="RO" Name="hpmcounter30" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC1F" Access="RO" Name="hpmcounter31" Description="User performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC80" Access="RO" Name="cycleh" Description="Upper 32 bits of cycle, RV32I only" Qemu="cpu_get_host_ticks()[63:32]" />
+  <Csr Number="0xC81" Access="RO" Name="timeh" Description="Upper 32 bits of time, RV32I only" />
+  <Csr Number="0xC82" Access="RO" Name="instreth" Description="Upper 32 bits of instret, RV32I only" Qemu="cpu_get_host_ticks()[63:32]" />
+  <Csr Number="0xC83" Access="RO" Name="hpmcounter3h" Description="Upper 32 bits of hpmcounter3, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC84" Access="RO" Name="hpmcounter4h" Description="Upper 32 bits of hpmcounter4, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC85" Access="RO" Name="hpmcounter5h" Description="Upper 32 bits of hpmcounter5, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC86" Access="RO" Name="hpmcounter6h" Description="Upper 32 bits of hpmcounter6, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC87" Access="RO" Name="hpmcounter7h" Description="Upper 32 bits of hpmcounter7, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC88" Access="RO" Name="hpmcounter8h" Description="Upper 32 bits of hpmcounter8, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC89" Access="RO" Name="hpmcounter9h" Description="Upper 32 bits of hpmcounter9, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC8A" Access="RO" Name="hpmcounter10h" Description="Upper 32 bits of hpmcounter10, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC8B" Access="RO" Name="hpmcounter11h" Description="Upper 32 bits of hpmcounter11, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC8C" Access="RO" Name="hpmcounter12h" Description="Upper 32 bits of hpmcounter12, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC8D" Access="RO" Name="hpmcounter13h" Description="Upper 32 bits of hpmcounter13, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC8E" Access="RO" Name="hpmcounter14h" Description="Upper 32 bits of hpmcounter14, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC8F" Access="RO" Name="hpmcounter15h" Description="Upper 32 bits of hpmcounter15, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC90" Access="RO" Name="hpmcounter16h" Description="Upper 32 bits of hpmcounter16, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC91" Access="RO" Name="hpmcounter17h" Description="Upper 32 bits of hpmcounter17, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC92" Access="RO" Name="hpmcounter18h" Description="Upper 32 bits of hpmcounter18, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC93" Access="RO" Name="hpmcounter19h" Description="Upper 32 bits of hpmcounter19, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC94" Access="RO" Name="hpmcounter20h" Description="Upper 32 bits of hpmcounter20, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC95" Access="RO" Name="hpmcounter21h" Description="Upper 32 bits of hpmcounter21, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC96" Access="RO" Name="hpmcounter22h" Description="Upper 32 bits of hpmcounter22, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC97" Access="RO" Name="hpmcounter23h" Description="Upper 32 bits of hpmcounter23, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC98" Access="RO" Name="hpmcounter24h" Description="Upper 32 bits of hpmcounter24, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC99" Access="RO" Name="hpmcounter25h" Description="Upper 32 bits of hpmcounter25, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC9A" Access="RO" Name="hpmcounter26h" Description="Upper 32 bits of hpmcounter26, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC9B" Access="RO" Name="hpmcounter27h" Description="Upper 32 bits of hpmcounter27, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC9C" Access="RO" Name="hpmcounter28h" Description="Upper 32 bits of hpmcounter28, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC9D" Access="RO" Name="hpmcounter29h" Description="Upper 32 bits of hpmcounter29, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC9E" Access="RO" Name="hpmcounter30h" Description="Upper 32 bits of hpmcounter30, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xC9F" Access="RO" Name="hpmcounter31h" Description="Upper 32 bits of hpmcounter31, RV32I only" Qemu="__HARDWIRED_ZERO__" />
+</IsaSubset>

@@ -1,0 +1,88 @@
+table.instruction {
+	width: 100%;
+}
+
+div.table_encoding {
+	display: table;
+	border-collapse: separate;
+	border-spacing: 5px;
+	margin-left:-5px;
+}
+
+div.bitgroup {
+	display: table-cell;
+	vertical-align: top;
+	border-collapse: collapse;
+}
+
+div.bitindex {
+	display: table-cell;
+	font-size: 0.75em;
+	border-style: none;
+}
+
+div.bit {
+	width: 42px;
+	height: 42px;
+	min-width: 42px;
+	min-height: 42px;
+	max-width: 42px;
+	max-height: 42px;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+	background-position: center;
+	font-size: 0.9em;
+	border: 2px solid black;
+}
+
+div.bit_error {
+	cursor:hand;
+	cursor:pointer;
+}
+div.bit_error_selected {
+	background-image: url("/static/images/bitflip.png");
+	background-size: 95%;
+	
+	/* Hide the text. */
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+div.bit {
+	color:black;
+}
+div.bit.bit_selected {
+	font-weight:bolder;
+}
+
+div.bit_opcode {
+	background-color: {{color.opcode}};
+}
+div.bit_opcode.bit_selected {
+	background-color: {{color.opcode_sel}};
+}
+
+div.bit_dontcare {
+	color: white;
+	background-color: {{color.dontcare}};
+}
+div.bit_dontcare.bit_selected {
+	background-color: {{color.dontcare_sel}};
+}
+
+div.bit_register {
+	background-color: {{color.register}};
+}
+div.bit_register.bit_selected {
+	background-color: {{color.register_sel}};
+}
+
+div.bit_immediate {
+	background-color: {{color.immediate}};
+}
+div.bit_immediate.bit_selected {
+	background-color: {{color.immediate_sel}};
+}

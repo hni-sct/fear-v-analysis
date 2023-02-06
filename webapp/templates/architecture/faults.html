@@ -1,0 +1,119 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+{% load text_colorizer %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% url 'css' 'overview.css' %}">
+{% endblock %}
+
+{% block title %}{{arch.name}} Architecture Overview{% endblock %}
+
+{% block body %}
+<div class="section-block">
+  <div>Bitflip test relevance:</div>
+  <div class="relevance-table">
+
+    {% include "include/archtestrelevancepiechart.html" with bits=16 icount=icount.0 percent=percent.0 relevant=relevant_faults.0 faults=faults.0 %}
+    {% include "include/archtestrelevancepiechart.html" with bits=32 icount=icount.1 percent=percent.1 relevant=relevant_faults.1 faults=faults.1 %}
+    {% include "include/archtestrelevancepiechart.html" with bits=0  icount=icount.2 percent=percent.2 relevant=relevant_faults.2 faults=faults.2 %}
+
+    <div style="vertical-align:middle;">
+      <div class="donutlegend">
+        <div>
+          <div style="background: #404040;"></div>
+          <div>No effect<br>(Don't care)</div>
+        </div>
+        <div>
+          <div style="background: #808080;"></div>
+          <div>Illegal opcode</div>
+        </div>
+        <div>
+          <div style="background: #ffdf80;"></div>
+          <div>Relevant tests</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section-block">
+  <div>Effects on opcodes and operands:</div>
+  <div style="width:100%; padding-top: 5px; padding-bottom: 5px;"><canvas id="barchart"></canvas></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+Chart.defaults.global.defaultFontColor = '#000';
+
+function drawTestRelevancePieChart(arch, bits) {
+    $.getJSON("/webapp/json/testrelevance/" + arch + "/" + bits + "/", function(data) {
+        var widget = $("#chart-relevance-" + bits);
+        var chart = new Chart(widget, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                legend: {
+                    display: false
+                },
+                cutoutPercentage: 70,
+                tooltips: {
+                    enabled: true,
+                }
+
+            }
+        });
+    });
+}
+
+function drawFaultDistributionBarChart(arch) {
+  $.getJSON("/webapp/json/faultdistribution/" + arch + "/", function(data) {
+    var widget = $("#barchart");
+    var chart = new Chart(widget, {
+      type: 'bar',
+      data: {
+	labels: [ "Opcode", "Data", "Address" ],
+	datasets: [
+		data.datasets[0],
+		data.datasets[1],
+		data.datasets[2],
+		data.datasets[3],
+	],
+
+      },
+      options: {
+        stacked: false,
+        legend: {
+          labels: {
+	    fontColor: 'rgb(0, 0, 0)',
+            display: true,
+            generateLabels: function(chart) {
+              labels = Chart.defaults.global.legend.labels.generateLabels(chart);
+		labels[0].fillStyle = 'rgba(100,100,100, 0.2)';
+		labels[1].fillStyle = 'rgba(100,100,100, 0.4)';
+		labels[2].fillStyle = 'rgba(100,100,100, 0.6)';
+		labels[3].fillStyle = 'rgba(100,100,100, 0.8)';
+		labels[0].strokeStyle = 'rgba(50,50,50, 0.4)';
+		labels[1].strokeStyle = 'rgba(50,50,50, 0.6)';
+		labels[2].strokeStyle = 'rgba(50,50,50, 0.8)';
+		labels[3].strokeStyle = 'rgba(50,50,50, 1.0)';
+              return labels;
+            }
+          }
+        },
+      }
+    });
+  });
+}
+
+$(document).ready(function (){
+      
+  drawTestRelevancePieChart("{{arch.id}}", 16);
+  drawTestRelevancePieChart("{{arch.id}}", 32);
+  drawTestRelevancePieChart("{{arch.id}}", 0);
+
+  drawFaultDistributionBarChart("{{arch.id}}");
+  
+});
+</script>
+{% endblock %}

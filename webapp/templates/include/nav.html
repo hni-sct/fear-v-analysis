@@ -1,0 +1,14 @@
+<nav class="common_content">
+	{% for i in other %}
+	<div class="navitem{% if nav_id == i.id %} active{% endif %}" id="nav-{{i.id}}">
+		<div>
+			<div class="navtext">{{i.name}}</div>
+		</div>
+		<div>
+			<div class="navlink">
+				<a href="{% url 'detail' i.id %}">detail</a> | <a href="{% url 'interactive' i.id %}">interactive</a>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</nav>

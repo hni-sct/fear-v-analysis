@@ -1,0 +1,564 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="FE300">
+
+    <!-- General Purpose Registers -->
+    <Gpr2Rtl Number="1" RTL="Rocket:core.gpr[0]"/>
+    <Gpr2Rtl Number="2" RTL="Rocket:core.gpr[1]"/>
+    <Gpr2Rtl Number="3" RTL="Rocket:core.gpr[2]"/>
+    <Gpr2Rtl Number="4" RTL="Rocket:core.gpr[3]"/>
+    <Gpr2Rtl Number="5" RTL="Rocket:core.gpr[4]"/>
+    <Gpr2Rtl Number="6" RTL="Rocket:core.gpr[5]"/>
+    <Gpr2Rtl Number="7" RTL="Rocket:core.gpr[6]"/>
+    <Gpr2Rtl Number="8" RTL="Rocket:core.gpr[7]"/>
+    <Gpr2Rtl Number="9" RTL="Rocket:core.gpr[8]"/>
+    <Gpr2Rtl Number="10" RTL="Rocket:core.gpr[9]"/>
+    <Gpr2Rtl Number="11" RTL="Rocket:core.gpr[10]"/>
+    <Gpr2Rtl Number="12" RTL="Rocket:core.gpr[11]"/>
+    <Gpr2Rtl Number="13" RTL="Rocket:core.gpr[12]"/>
+    <Gpr2Rtl Number="14" RTL="Rocket:core.gpr[13]"/>
+    <Gpr2Rtl Number="15" RTL="Rocket:core.gpr[14]"/>
+    <Gpr2Rtl Number="16" RTL="Rocket:core.gpr[15]"/>
+    <Gpr2Rtl Number="17" RTL="Rocket:core.gpr[16]"/>
+    <Gpr2Rtl Number="18" RTL="Rocket:core.gpr[17]"/>
+    <Gpr2Rtl Number="19" RTL="Rocket:core.gpr[18]"/>
+    <Gpr2Rtl Number="20" RTL="Rocket:core.gpr[19]"/>
+    <Gpr2Rtl Number="21" RTL="Rocket:core.gpr[20]"/>
+    <Gpr2Rtl Number="22" RTL="Rocket:core.gpr[21]"/>
+    <Gpr2Rtl Number="23" RTL="Rocket:core.gpr[22]"/>
+    <Gpr2Rtl Number="24" RTL="Rocket:core.gpr[23]"/>
+    <Gpr2Rtl Number="25" RTL="Rocket:core.gpr[24]"/>
+    <Gpr2Rtl Number="26" RTL="Rocket:core.gpr[25]"/>
+    <Gpr2Rtl Number="27" RTL="Rocket:core.gpr[26]"/>
+    <Gpr2Rtl Number="28" RTL="Rocket:core.gpr[27]"/>
+    <Gpr2Rtl Number="29" RTL="Rocket:core.gpr[28]"/>
+    <Gpr2Rtl Number="30" RTL="Rocket:core.gpr[29]"/>
+    <Gpr2Rtl Number="31" RTL="Rocket:core.gpr[30]"/>
+
+    <!-- Configuration & Status Registers -->
+    <!-- Machine Information Registers -->
+    <Csr2Rtl Number="0xF11" Type="SHC" RTL="" Comment="" />
+    <Csr2Rtl Number="0xF12" Type="SHC" RTL="" Comment="" />
+    <Csr2Rtl Number="0xF13" Type="SHC" RTL="" Comment="" />
+    <Csr2Rtl Number="0xF14" Type="SHC" RTL="" Comment="RTL: Chisel constant hartid=0" />
+
+    <!-- Machine Trap Setup -->
+    <Csr2Rtl Number="0x300" Type="SIR" Mask="0x00000188" RTL="CSRFile:csr.reg_mstatus_{spp|mpie|mie}" Comment="" />
+    <Csr2Rtl Number="0x301" Type="SIR" Mask="0xFFFFFFFF" RTL="CSRFile:csr.reg_misa" Comment="" />
+    <Csr2Rtl Number="0x302" Type="SCD" RTL="" Comment="RISC-V Priv. Spec: Register should not exist if when only M-Mode is implemented (see 3.1.8)" />
+    <Csr2Rtl Number="0x303" Type="SCD" RTL="" Comment="RISC-V Priv. Spec: Register should not exist if when only M-Mode is implemented (see 3.1.8)" />
+    <Csr2Rtl Number="0x304" Type="SIR" Mask="0x00000888" RTL="CSRFile:csr.reg_mie" Comment="" />
+    <Csr2Rtl Number="0x305" Type="SIR" Mask="0xFFFFFFFD" RTL="CSRFile:csr.reg_mtvec" Comment="" />
+    <Csr2Rtl Number="0x306" Type="SCD" RTL="" Comment="not implemented in FE300" />
+
+    <!-- Machine Trap Handling -->
+    <Csr2Rtl Number="0x340" Type="SIR" Mask="0xFFFFFFFF" RTL="CSRFile:csr.reg_mscratch" Comment="" />
+    <Csr2Rtl Number="0x341" Type="SIR" Mask="0xFFFFFFFE" RTL="CSRFile:csr.reg_mepc" Comment="" />
+    <Csr2Rtl Number="0x342" Type="SIR" Mask="0xFFFFFFFF" RTL="CSRFile:csr.reg_mcause" Comment="" />
+    <Csr2Rtl Number="0x343" Type="SIR" Mask="0xFFFFFFFF" RTL="CSRFile:csr.reg_mbadaddr" Comment="" />
+    <Csr2Rtl Number="0x344" Type="SIR" RTL="" Comment="RTL: only wire was found" />
+
+    <!-- Machine Counter/Timers -->
+    <Csr2Rtl Number="0xB00" Type="SIR" RTL="" Comment="RTL: only wire was found; QEMU: host function cpu_get_host_ticks() (lower 32 bits)" />
+    <Csr2Rtl Number="0xB02" Type="SIR" RTL="" Comment="RTL: only wire was found; QEMU: host function cpu_get_host_ticks() (lower 32 bits)" />
+    <Csr2Rtl Number="0xB03" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB04" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB05" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB06" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB07" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB08" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB09" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB0A" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB0B" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB0C" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB0D" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB0E" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB0F" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB10" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB11" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB12" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB13" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB14" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB15" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB16" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB17" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB18" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB19" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB1A" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB1B" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB1C" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB1D" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB1E" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB1F" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB80" Type="SIR" RTL="" Comment="RTL: only wire was found; QEMU: host function cpu_get_host_ticks() (upper 32 bits)" />
+    <Csr2Rtl Number="0xB82" Type="SIR" RTL="" Comment="RTL: only wire was found; QEMU: host function cpu_get_host_ticks() (upper 32 bits)" />
+    <Csr2Rtl Number="0xB83" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB84" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB85" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB86" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB87" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB88" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB89" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB8A" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB8B" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB8C" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB8D" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB8E" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB8F" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB90" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB91" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB92" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB93" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB94" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB95" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB96" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB97" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB98" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB99" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB9A" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB9B" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB9C" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB9D" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB9E" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0xB9F" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+
+    <!-- Machine Counter Setup -->
+    <Csr2Rtl Number="0x320" Type="SCD" RTL="" Comment="not implemented in FE300; QEMU: mcounteren and mcountinhibit share same variable env->mcounteren" />
+    <Csr2Rtl Number="0x323" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x324" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x325" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x326" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x327" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x328" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x329" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x32A" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x32B" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x32C" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x32D" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x32E" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x32F" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x330" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x331" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x332" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x333" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x334" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x335" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x336" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x337" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x338" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x339" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x33A" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x33B" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x33C" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x33D" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x33E" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+    <Csr2Rtl Number="0x33F" Type="SHC" RTL="" Comment="disabled: FE300 has no extra performance counters (nPerfCounters=0)" />
+
+    <!-- Machine Memory Protection -->
+    <Csr2Rtl Number="0x3A0" Type="SIR" Mask="0x9F9F9F9F" RTL="CSRFile:csr.reg_pmp_{0..3}_cfg_{l|x|w|r|a}" Comment="nPMPs=8 (FE300: only 8 mem-regions)" />
+    <Csr2Rtl Number="0x3A1" Type="SIR" Mask="0x9F9F9F9F" RTL="CSRFile:csr.reg_pmp_{4..7}_cfg_{l|x|w|r|a}" Comment="nPMPs=8 (FE300: only 8 mem-regions)" />
+    <Csr2Rtl Number="0x3A2" Type="SHC" RTL="" Comment="nPMPs=8 (FE300: disabled)" />
+    <Csr2Rtl Number="0x3A3" Type="SHC" RTL="" Comment="nPMPs=8 (FE300: disabled)" />
+    <Csr2Rtl Number="0x3B0" Type="SIR" Mask="0xFFFFFFFC" RTL="CSRFile:csr.reg_pmp_0_addr" Comment="nPMPs=8 (FE300: only 8 mem-regions)" />
+    <Csr2Rtl Number="0x3B1" Type="SIR" Mask="0xFFFFFFFC" RTL="CSRFile:csr.reg_pmp_1_addr" Comment="nPMPs=8 (FE300: only 8 mem-regions)" />
+    <Csr2Rtl Number="0x3B2" Type="SIR" Mask="0xFFFFFFFC" RTL="CSRFile:csr.reg_pmp_2_addr" Comment="nPMPs=8 (FE300: only 8 mem-regions)" />
+    <Csr2Rtl Number="0x3B3" Type="SIR" Mask="0xFFFFFFFC" RTL="CSRFile:csr.reg_pmp_3_addr" Comment="nPMPs=8 (FE300: only 8 mem-regions)" />
+    <Csr2Rtl Number="0x3B4" Type="SIR" Mask="0xFFFFFFFC" RTL="CSRFile:csr.reg_pmp_4_addr" Comment="nPMPs=8 (FE300: only 8 mem-regions)" />
+    <Csr2Rtl Number="0x3B5" Type="SIR" Mask="0xFFFFFFFC" RTL="CSRFile:csr.reg_pmp_5_addr" Comment="nPMPs=8 (FE300: only 8 mem-regions)" />
+    <Csr2Rtl Number="0x3B6" Type="SIR" Mask="0xFFFFFFFC" RTL="CSRFile:csr.reg_pmp_6_addr" Comment="nPMPs=8 (FE300: only 8 mem-regions)" />
+    <Csr2Rtl Number="0x3B7" Type="SIR" Mask="0xFFFFFFFC" RTL="CSRFile:csr.reg_pmp_7_addr" Comment="nPMPs=8 (FE300: only 8 mem-regions)" />
+    <Csr2Rtl Number="0x3B8" Type="SHC" RTL="" Comment="nPMPs=8 (FE300: disabled)" />
+    <Csr2Rtl Number="0x3B9" Type="SHC" RTL="" Comment="nPMPs=8 (FE300: disabled)" />
+    <Csr2Rtl Number="0x3BA" Type="SHC" RTL="" Comment="nPMPs=8 (FE300: disabled)" />
+    <Csr2Rtl Number="0x3BB" Type="SHC" RTL="" Comment="nPMPs=8 (FE300: disabled)" />
+    <Csr2Rtl Number="0x3BC" Type="SHC" RTL="" Comment="nPMPs=8 (FE300: disabled)" />
+    <Csr2Rtl Number="0x3BD" Type="SHC" RTL="" Comment="nPMPs=8 (FE300: disabled)" />
+    <Csr2Rtl Number="0x3BE" Type="SHC" RTL="" Comment="nPMPs=8 (FE300: disabled)" />
+    <Csr2Rtl Number="0x3BF" Type="SHC" RTL="" Comment="nPMPs=8 (FE300: disabled)" />
+
+    <!-- FE300 Extra (non-standard) CSRs -->
+    <Csr Number="0x7C1" Access="R/W" Name="chickencsr" Group="FE300 Proprietary" Description="" Qemu="" />
+    <Csr2Rtl Number="0x7C1" Type="Extra" RTL="CSRFile / CustomCSRs.scala:27-28" Comment="RTL: ChickenCSR (somehow related to clock gating); QEMU: not available" />
+
+    <!-- From FE310-G000 Manual v3p2 
+          TO DO: Check against FE300 FPGA or Platform Datasheet!!! -->
+
+    <!-- Devices -->
+    <Device Name="Debug">
+        <Csr Address="0x00000100" Bits="32" Name="Clear debug interrupt to component"/>
+        <Csr Address="0x00000104" Bits="32" Name="Set debug interrupt to component"/>
+        <Csr Address="0x00000108" Bits="32" Name="Clear halt notification from component"/>
+        <Csr Address="0x0000010C" Bits="32" Name="Set halt notification from component"/>
+        <MemoryRegion Type="RAM" From="0x00000400" To="0x0000043F" Name="Debug RAM"/>
+        <MemoryRegion Type="ROM" From="0x00000800" To="0x00000FFF" Name="Debug ROM"/>
+    </Device>
+
+    <Device Name="Mask ROM">
+        <MemoryRegion Type="ROM" From="0x00001000" To="0x00001003" Name="Reset"/>
+        <MemoryRegion Type="ROM" From="0x0000100C" To="0x0000100F" Name="Configuration string address"/>
+        <MemoryRegion Type="ROM" From="0x00001010" To="0x00001FFF" Name="User ROM"/>
+    </Device>
+
+    <Device Name="OTP Memory Region">
+        <MemoryRegion Type="ROM" From="0x00020000" To="0x00021FFF" Name="ROM Memory Region"/>
+    </Device>
+
+    <Device Name="CLINT">
+        <Csr Address="0x02000000" Bits="32" Name="msip" Qemu="CPURISCVState.mip[MIP_MSIP]"/>
+        <Csr Address="0x02004000" Bits="32" Name="mtimecmplo" Qemu="CPURISCVState.timecmp" RTL="CLINT:clint.timecmp_0"/>
+        <Csr Address="0x02004004" Bits="32" Name="mtimecmphi" Qemu="CPURISCVState.timecmp" RTL="CLINT:clint.timecmp_0"/>
+        <Csr Address="0x0200BFF8" Bits="32" Name="mtimelo" Qemu="cpu_riscv_read_rtc()" RTL="CLINT:clint.time$"/>
+        <Csr Address="0x0200BFFC" Bits="32" Name="mtimehi" Qemu="cpu_riscv_read_rtc()" RTL="CLINT:clint.time$"/>
+    </Device>
+
+    <Device Name="PLIC">
+        <Csr Address="0x0C000004" Bits="32" Name="source 1 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_1"/>
+        <Csr Address="0x0C000008" Bits="32" Name="source 2 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_2"/>
+        <Csr Address="0x0C00000C" Bits="32" Name="source 3 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_3"/>
+        <Csr Address="0x0C000010" Bits="32" Name="source 4 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_4"/>
+        <Csr Address="0x0C000014" Bits="32" Name="source 5 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_5"/>
+        <Csr Address="0x0C000018" Bits="32" Name="source 6 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_6"/>
+        <Csr Address="0x0C00001C" Bits="32" Name="source 7 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_7"/>
+        <Csr Address="0x0C000020" Bits="32" Name="source 8 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_8"/>
+        <Csr Address="0x0C000024" Bits="32" Name="source 9 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_9"/>
+        <Csr Address="0x0C000028" Bits="32" Name="source 10 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_10"/>
+        <Csr Address="0x0C00002C" Bits="32" Name="source 11 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_11"/>
+        <Csr Address="0x0C000030" Bits="32" Name="source 12 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_12"/>
+        <Csr Address="0x0C000034" Bits="32" Name="source 13 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_13"/>
+        <Csr Address="0x0C000038" Bits="32" Name="source 14 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_14"/>
+        <Csr Address="0x0C00003C" Bits="32" Name="source 15 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_15"/>
+        <Csr Address="0x0C000040" Bits="32" Name="source 16 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_16"/>
+        <Csr Address="0x0C000044" Bits="32" Name="source 17 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_17"/>
+        <Csr Address="0x0C000048" Bits="32" Name="source 18 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_18"/>
+        <Csr Address="0x0C00004C" Bits="32" Name="source 19 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_19"/>
+        <Csr Address="0x0C000050" Bits="32" Name="source 20 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_20"/>
+        <Csr Address="0x0C000054" Bits="32" Name="source 21 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_21"/>
+        <Csr Address="0x0C000058" Bits="32" Name="source 22 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_22"/>
+        <Csr Address="0x0C00005C" Bits="32" Name="source 23 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_23"/>
+        <Csr Address="0x0C000060" Bits="32" Name="source 24 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_24"/>
+        <Csr Address="0x0C000064" Bits="32" Name="source 25 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_25"/>
+        <Csr Address="0x0C000068" Bits="32" Name="source 26 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_26"/>
+        <Csr Address="0x0C00006C" Bits="32" Name="source 27 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_27"/>
+        <Csr Address="0x0C000070" Bits="32" Name="source 28 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_28"/>
+        <Csr Address="0x0C000074" Bits="32" Name="source 29 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_29"/>
+        <Csr Address="0x0C000078" Bits="32" Name="source 30 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_30"/>
+        <Csr Address="0x0C00007C" Bits="32" Name="source 31 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_31"/>
+        <Csr Address="0x0C000080" Bits="32" Name="source 32 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_32"/>
+        <Csr Address="0x0C000084" Bits="32" Name="source 33 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_33"/>
+        <Csr Address="0x0C000088" Bits="32" Name="source 34 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_34"/>
+        <Csr Address="0x0C00008C" Bits="32" Name="source 35 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_35"/>
+        <Csr Address="0x0C000090" Bits="32" Name="source 36 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_36"/>
+        <Csr Address="0x0C000094" Bits="32" Name="source 37 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_37"/>
+        <Csr Address="0x0C000098" Bits="32" Name="source 38 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_38"/>
+        <Csr Address="0x0C00009C" Bits="32" Name="source 39 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_39"/>
+        <Csr Address="0x0C0000A0" Bits="32" Name="source 40 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_40"/>
+        <Csr Address="0x0C0000A4" Bits="32" Name="source 41 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_41"/>
+        <Csr Address="0x0C0000A8" Bits="32" Name="source 42 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_42"/>
+        <Csr Address="0x0C0000AC" Bits="32" Name="source 43 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_43"/>
+        <Csr Address="0x0C0000B0" Bits="32" Name="source 44 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_44"/>
+        <Csr Address="0x0C0000B4" Bits="32" Name="source 45 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_45"/>
+        <Csr Address="0x0C0000B8" Bits="32" Name="source 46 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_46"/>
+        <Csr Address="0x0C0000BC" Bits="32" Name="source 47 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_47"/>
+        <Csr Address="0x0C0000C0" Bits="32" Name="source 48 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_48"/>
+        <Csr Address="0x0C0000C4" Bits="32" Name="source 49 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_49"/>
+        <Csr Address="0x0C0000C8" Bits="32" Name="source 50 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_50"/>
+        <Csr Address="0x0C0000CC" Bits="32" Name="source 51 priority" Qemu="SiFivePLICState.source_priority[]"
+             RTL="TLPLIC:plic.priority_51"/>
+        <Csr Address="0x0C001000" Bits="32" Name="Start of pending array" Qemu="SiFivePLICState.pending[]"
+             RTL="TLPLIC:plic.pending{1..31}"/>
+        <Csr Address="0x0C001004" Bits="32" Name="Last word of pending array" Qemu="SiFivePLICState.pending[]"
+             RTL="TLPLIC:plic.pending{32..51}"/>
+        <Csr Address="0x0C002000" Bits="32" Name="Start Hart 0 M-Mode interrupt enables" Qemu="SiFivePLICState.enable[]"
+             RTL="TLPLIC:plic.enables_0_{0..3}"/>
+        <Csr Address="0x0C002004" Bits="32" Name="End Hart 0 M-Mode interrupt enables" Qemu="SiFivePLICState.enable[]"
+             RTL="TLPLIC:plic.enables_0_{4..6}"/>
+        <Csr Address="0x0C200000" Bits="32" Name="Hart 0 M-Mode priority threshold" RTL="TLPLIC:plic.threshold_0"/>
+        <Csr Address="0x0C200004" Bits="32" Name="Hart 0 M-Mode claim/complete"/>
+    </Device>
+
+    <Device Name="AON">
+        <!-- Watchdog -->
+        <Csr Address="0x10000000" Bits="32" Name="wdogcfg"/>
+        <Csr Address="0x10000008" Bits="32" Name="wdogcount"/>
+        <Csr Address="0x10000010" Bits="32" Name="wdogs"/>
+        <Csr Address="0x10000018" Bits="32" Name="wdogfeed"/>
+        <Csr Address="0x1000001C" Bits="32" Name="wdogkey"/>
+        <Csr Address="0x10000020" Bits="32" Name="wdogcmp0"/>
+        <!-- RTC -->
+        <Csr Address="0x10000040" Bits="32" Name="rtccfg"/>
+        <Csr Address="0x10000048" Bits="32" Name="rtccountlo"/>
+        <Csr Address="0x1000004C" Bits="32" Name="rtccounthi"/>
+        <Csr Address="0x10000050" Bits="32" Name="rtcs"/>
+        <Csr Address="0x10000060" Bits="32" Name="rtccmp0"/>
+        <!-- Ring Oscillator -->
+        <Csr Address="0x10000070" Bits="32" Name="lfrosccfg"/>
+        <!-- Backup Registers -->
+        <Csr Address="0x10000080" Bits="32" Name="backup_0" RTL="TLMockAON:aon.backupRegs_0"/>
+        <Csr Address="0x10000084" Bits="32" Name="backup_1" RTL="TLMockAON:aon.backupRegs_1"/>
+        <Csr Address="0x10000088" Bits="32" Name="backup_2" RTL="TLMockAON:aon.backupRegs_2"/>
+        <Csr Address="0x1000008C" Bits="32" Name="backup_3" RTL="TLMockAON:aon.backupRegs_3"/>
+        <Csr Address="0x10000090" Bits="32" Name="backup_4" RTL="TLMockAON:aon.backupRegs_4"/>
+        <Csr Address="0x10000094" Bits="32" Name="backup_5" RTL="TLMockAON:aon.backupRegs_5"/>
+        <Csr Address="0x10000098" Bits="32" Name="backup_6" RTL="TLMockAON:aon.backupRegs_6"/>
+        <Csr Address="0x1000009C" Bits="32" Name="backup_7" RTL="TLMockAON:aon.backupRegs_7"/>
+        <Csr Address="0x100000A0" Bits="32" Name="backup_8" RTL="TLMockAON:aon.backupRegs_8"/>
+        <Csr Address="0x100000A4" Bits="32" Name="backup_9" RTL="TLMockAON:aon.backupRegs_9"/>
+        <Csr Address="0x100000A8" Bits="32" Name="backup_10" RTL="TLMockAON:aon.backupRegs_10"/>
+        <Csr Address="0x100000AC" Bits="32" Name="backup_11" RTL="TLMockAON:aon.backupRegs_11"/>
+        <Csr Address="0x100000B0" Bits="32" Name="backup_12" RTL="TLMockAON:aon.backupRegs_12"/>
+        <Csr Address="0x100000B4" Bits="32" Name="backup_13" RTL="TLMockAON:aon.backupRegs_13"/>
+        <Csr Address="0x100000B8" Bits="32" Name="backup_14" RTL="TLMockAON:aon.backupRegs_14"/>
+        <Csr Address="0x100000BC" Bits="32" Name="backup_15" RTL="TLMockAON:aon.backupRegs_15"/>
+        <!-- PMU Wakeup program instructions -->
+        <Csr Address="0x10000100" Bits="32" Name="pmuwakeupi0" RTL="PMUCore:core.wakeupProgram_0"/>
+        <Csr Address="0x10000104" Bits="32" Name="pmuwakeupi1" RTL="PMUCore:core.wakeupProgram_1"/>
+        <Csr Address="0x10000108" Bits="32" Name="pmuwakeupi2" RTL="PMUCore:core.wakeupProgram_2"/>
+        <Csr Address="0x1000010C" Bits="32" Name="pmuwakeupi3" RTL="PMUCore:core.wakeupProgram_3"/>
+        <Csr Address="0x10000110" Bits="32" Name="pmuwakeupi4" RTL="PMUCore:core.wakeupProgram_4"/>
+        <Csr Address="0x10000114" Bits="32" Name="pmuwakeupi5" RTL="PMUCore:core.wakeupProgram_5"/>
+        <Csr Address="0x10000118" Bits="32" Name="pmuwakeupi6" RTL="PMUCore:core.wakeupProgram_6"/>
+        <Csr Address="0x1000011C" Bits="32" Name="pmuwakeupi7" RTL="PMUCore:core.wakeupProgram_7"/>
+        <!-- PMU Sleep program instructions -->
+        <Csr Address="0x10000120" Bits="32" Name="pmusleepi0" RTL="PMUCore:core.sleepProgram_0"/>
+        <Csr Address="0x10000124" Bits="32" Name="pmusleepi1" RTL="PMUCore:core.sleepProgram_1"/>
+        <Csr Address="0x10000128" Bits="32" Name="pmusleepi2" RTL="PMUCore:core.sleepProgram_2"/>
+        <Csr Address="0x1000012C" Bits="32" Name="pmusleepi3" RTL="PMUCore:core.sleepProgram_3"/>
+        <Csr Address="0x10000130" Bits="32" Name="pmusleepi4" RTL="PMUCore:core.sleepProgram_4"/>
+        <Csr Address="0x10000134" Bits="32" Name="pmusleepi5" RTL="PMUCore:core.sleepProgram_5"/>
+        <Csr Address="0x10000138" Bits="32" Name="pmusleepi6" RTL="PMUCore:core.sleepProgram_6"/>
+        <Csr Address="0x1000013C" Bits="32" Name="pmusleepi7" RTL="PMUCore:core.sleepProgram_7"/>
+        <!-- PMU Control -->
+        <Csr Address="0x10000140" Bits="32" Name="pmuie" RTL="PMUCore:core.ie (wire)"/>
+        <Csr Address="0x10000144" Bits="32" Name="pmucause" RTL="PMUCore:core.wakeupCause (wire)"/>
+        <Csr Address="0x10000148" Bits="32" Name="pmusleep" RTL="PMUCore:core.wantSleep (wire)"/>
+        <Csr Address="0x1000014C" Bits="32" Name="pmukey"/>
+    </Device>
+
+    <Device Name="PRCI">
+        <Csr Address="0x10008000" Bits="32" Name="hfrosccfg" Qemu="SiFiveEPRCIState.hfrosccfg"/>
+        <Csr Address="0x10008004" Bits="32" Name="hfxosccfg" Qemu="SiFiveEPRCIState.hfxosccfg"/>
+        <Csr Address="0x10008008" Bits="32" Name="pllcfg" Qemu="SiFiveEPRCIState.pllcfg"/>
+        <Csr Address="0x1000800C" Bits="32" Name="plloutdiv" Qemu="SiFiveEPRCIState.plloutdiv"/>
+        <Csr Address="0x10008010" Bits="32" Name="coreclkcfg"/>
+    </Device>
+
+    <Device Name="OTP Control">
+        <Csr Address="0x10010000" Bits="32" Name="otp_lock"/>
+        <Csr Address="0x10010004" Bits="32" Name="otp_ck"/>
+        <Csr Address="0x10010008" Bits="32" Name="otp_oe"/>
+        <Csr Address="0x1001000C" Bits="32" Name="otp_sel"/>
+        <Csr Address="0x10010010" Bits="32" Name="otp_we"/>
+        <Csr Address="0x10010014" Bits="32" Name="otp_mr"/>
+        <Csr Address="0x10010018" Bits="32" Name="otp_mrr"/>
+        <Csr Address="0x1001001C" Bits="32" Name="otp_mpp"/>
+        <Csr Address="0x10010020" Bits="32" Name="otp_vrren"/>
+        <Csr Address="0x10010024" Bits="32" Name="otp_vppen"/>
+        <Csr Address="0x10010028" Bits="32" Name="otp_a"/>
+        <Csr Address="0x1001002C" Bits="32" Name="otp_d"/>
+        <Csr Address="0x10010030" Bits="32" Name="otp_q"/>
+        <Csr Address="0x10010034" Bits="32" Name="otp_rsctrl"/>
+    </Device>
+
+    <Device Name="GPIO">
+        <Csr Address="0x10012000" Bits="32" Name="input_val" RTL="TLGPIO:gpio_0_1.valueReg"/>
+        <Csr Address="0x10012004" Bits="32" Name="input_en" RTL="TLGPIO:gpio_0_1.AsyncResetRegVec_w32_i0:ieReg"/>
+        <Csr Address="0x10012008" Bits="32" Name="output_en" RTL="TLGPIO:gpio_0_1.AsyncResetRegVec_w32_i0:oeReg"/>
+        <Csr Address="0x1001200C" Bits="32" Name="output_val" RTL="TLGPIO:gpio_0_1.portReg"/>
+        <Csr Address="0x10012010" Bits="32" Name="pue" RTL="TLGPIO:gpio_0_1.AsyncResetRegVec_w32_i0:pueReg"/>
+        <Csr Address="0x10012014" Bits="32" Name="ds" RTL="TLGPIO:gpio_0_1.dsReg"/>
+        <Csr Address="0x10012018" Bits="32" Name="rise_ie" RTL="TLGPIO:gpio_0_1.riseIeReg"/>
+        <Csr Address="0x1001201C" Bits="32" Name="rise_ip" RTL="TLGPIO:gpio_0_1.riseIpReg"/>
+        <Csr Address="0x10012020" Bits="32" Name="fall_ie" RTL="TLGPIO:gpio_0_1.fallIeReg"/>
+        <Csr Address="0x10012024" Bits="32" Name="fall_ip" RTL="TLGPIO:gpio_0_1.fallIpReg"/>
+        <Csr Address="0x10012028" Bits="32" Name="high_ie" RTL="TLGPIO:gpio_0_1.highIeReg"/>
+        <Csr Address="0x1001202C" Bits="32" Name="high_ip" RTL="TLGPIO:gpio_0_1.highIpReg"/>
+        <Csr Address="0x10012030" Bits="32" Name="low_ie" RTL="TLGPIO:gpio_0_1.lowIeReg"/>
+        <Csr Address="0x10012034" Bits="32" Name="low_ip" RTL="TLGPIO:gpio_0_1.lowIpReg"/>
+        <Csr Address="0x10012038" Bits="32" Name="iof_en" RTL="TLGPIO:gpio_0_1.AsyncResetRegVec_w32_i0:iofEnReg"/>
+        <Csr Address="0x1001203C" Bits="32" Name="iof_sel" RTL="TLGPIO:gpio_0_1.iofSelReg"/>
+        <Csr Address="0x10012040" Bits="32" Name="out_xor" RTL="TLGPIO:gpio_0_1.xorReg"/>
+        <Csr Address="0x10012044" Bits="32" Name="passthru_high_ie"/>
+        <Csr Address="0x10012048" Bits="32" Name="passthru_low_ie"/>
+    </Device>
+
+    <Device Name="UART 0">
+        <Csr Address="0x10013000" Bits="32" Name="txdata" RTL="TLUART:uart_0_1.txq_io_enq_bits (wire)"/>
+        <Csr Address="0x10013004" Bits="32" Name="rxdata" RTL="TLUART:uart_0_1.rxq_io_deq_bits (wire)"/>
+        <Csr Address="0x10013008" Bits="32" Name="txctrl" Qemu="SiFiveUARTState.txctrl"
+             RTL="TLUART:uart_0_1.txen|nstop|txwm"/>
+        <Csr Address="0x1001300C" Bits="32" Name="rxctrl" Qemu="SiFiveUARTState.rxctrl"
+             RTL="TLUART:uart_0_1.rxen|rxwm"/>
+        <Csr Address="0x10013010" Bits="32" Name="ie" Qemu="SiFiveUARTState.ie" RTL="TLUART:uart_0_1.ie_txwm|ie_rxwm"/>
+        <Csr Address="0x10013014" Bits="32" Name="ip" Qemu="sifive_uart_ip()"
+             RTL="TLUART:uart_0_1.ip_txwm|ip_rxwm (wire)"/>
+        <Csr Address="0x10013018" Bits="32" Name="div" Qemu="SiFiveUARTState.div" RTL="TLUART:uart_0_1.div"/>
+    </Device>
+
+    <Device Name="QSPI 0 Control">
+        <Csr Address="0x10014000" Bits="32" Name="sckdiv" RTL="TLSPIFlash:qspi_0_1.ctrl_sck_div"/>
+        <Csr Address="0x10014004" Bits="32" Name="sckmode" RTL="TLSPIFlash:qspi_0_1.ctrl_sck_pha|ctrl_sck_pol"/>
+        <Csr Address="0x10014010" Bits="32" Name="csid" RTL="TLSPIFlash:qspi_0_1.ctrl_cs_id"/>
+        <Csr Address="0x10014014" Bits="32" Name="csdef" RTL="TLSPIFlash:qspi_0_1.ctrl_cs_dflt_0"/>
+        <Csr Address="0x10014018" Bits="32" Name="csmode" RTL="TLSPIFlash:qspi_0_1.ctrl_cs_mode"/>
+        <Csr Address="0x10014028" Bits="32" Name="delay0" RTL="TLSPIFlash:qspi_0_1.ctrl_dla_cssck|ctrl_dla_sckcs"/>
+        <Csr Address="0x1001402C" Bits="32" Name="delay1" RTL="TLSPIFlash:qspi_0_1.ctrl_dla_intercs|ctrl_dla_interxfr"/>
+        <Csr Address="0x10014040" Bits="32" Name="fmt"
+             RTL="TLSPIFlash:qspi_0_1.ctrl_fmt_proto|ctrl_fmt_endian|ctrl_fmt_iodir|ctrl_fmt_len"/>
+        <Csr Address="0x10014048" Bits="32" Name="txdata" RTL="TLSPIFlash:qspi_0_1.fifo_io_tx_bits (wire)"/>
+        <Csr Address="0x1001404C" Bits="32" Name="rxdata" RTL="TLSPIFlash:qspi_0_1.fifo_io_rx_bits (wire)"/>
+        <Csr Address="0x10014050" Bits="32" Name="txmark" RTL="TLSPIFlash:qspi_0_1.ctrl_wm_tx"/>
+        <Csr Address="0x10014054" Bits="32" Name="rxmark" RTL="TLSPIFlash:qspi_0_1.ctrl_wm_rx"/>
+        <Csr Address="0x10014060" Bits="32" Name="fctrl" RTL="TLSPIFlash:qspi_0_1.flash_en"/>
+        <Csr Address="0x10014064" Bits="32" Name="ffmt"
+             RTL="TLSPIFlash:qspi_0_1.insn_cmd_en|insn_addr_len|insn_pad_cnt|insn_cmd_proto|insn_addr_proto|insn_data_proto|insn_cmd_code|insn_pad_code"/>
+        <Csr Address="0x10014070" Bits="32" Name="ie" RTL="TLSPIFlash:qspi_0_1.ie_txwm|ie_rxwm"/>
+        <Csr Address="0x10014074" Bits="32" Name="ip" RTL="TLSPIFlash:qspi_0_1.fifo_io_ip_txwm|fifo_io_ip_rxwm (wire)"/>
+    </Device>
+
+    <Device Name="PWM 0">
+        <Csr Address="0x10015000" Bits="32" Name="pwmcfg"
+             RTL="TLPWM:pwm_0_1.PWMTimer:pwm.scale|sticky|zerocmp|deglitch|countAlways|oneShot|center_{0..3}|gang_{0..3}|ip_{0..3}"/>
+        <Csr Address="0x10015008" Bits="32" Name="pwmcount"
+             RTL="TLPWM:pwm_0_1.PWMTimer:pwm.__anonymous [Cat.scala 30] (wire)"/>
+        <Csr Address="0x10015010" Bits="32" Name="pwms" RTL="TLPWM:pwm_0_1.PWMTimer:pwm.s (wire)"/>
+        <Csr Address="0x10015020" Bits="32" Name="pwmcmp0" RTL="TLPWM:pwm_0_1.PWMTimer:pwm.cmp_0"/>
+        <Csr Address="0x10015024" Bits="32" Name="pwmcmp1" RTL="TLPWM:pwm_0_1.PWMTimer:pwm.cmp_1"/>
+        <Csr Address="0x10015028" Bits="32" Name="pwmcmp2" RTL="TLPWM:pwm_0_1.PWMTimer:pwm.cmp_2"/>
+        <Csr Address="0x1001502C" Bits="32" Name="pwmcmp3" RTL="TLPWM:pwm_0_1.PWMTimer:pwm.cmp_3"/>
+    </Device>
+
+    <Device Name="UART 1">
+        <Csr Address="0x10023000" Bits="32" Name="txdata" RTL="TLUART_1:uart_1_1.txq_io_enq_bits (wire)"/>
+        <Csr Address="0x10023004" Bits="32" Name="rxdata" RTL="TLUART_1:uart_1_1.rxq_io_deq_bits (wire)"/>
+        <Csr Address="0x10023008" Bits="32" Name="txctrl" Qemu="SiFiveUARTState.txctrl"
+             RTL="TLUART_1:uart_1_1.txen|nstop|txwm"/>
+        <Csr Address="0x1002300C" Bits="32" Name="rxctrl" Qemu="SiFiveUARTState.rxctrl"
+             RTL="TLUART_1:uart_1_1.rxen|rxwm"/>
+        <Csr Address="0x10023010" Bits="32" Name="ie" Qemu="SiFiveUARTState.ie"
+             RTL="TLUART_1:uart_1_1.ie_txwm|ie_rxwm"/>
+        <Csr Address="0x10023014" Bits="32" Name="ip" Qemu="sifive_uart_ip()"
+             RTL="TLUART_1:uart_1_1.ip_txwm|ip_rxwm (wire)"/>
+        <Csr Address="0x10023018" Bits="32" Name="div" Qemu="SiFiveUARTState.div" RTL="TLUART_1:uart_1_1.div"/>
+    </Device>
+
+    <Device Name="QSPI 1">
+        <Csr Address="0x10024000" Bits="32" Name="sckdiv" RTL="TLSPI:spi_0_1.ctrl_sck_div"/>
+        <Csr Address="0x10024004" Bits="32" Name="sckmode" RTL="TLSPI:spi_0_1.ctrl_sck_pha|ctrl_sck_pol"/>
+        <Csr Address="0x10024010" Bits="32" Name="csid" RTL="TLSPI:spi_0_1.ctrl_cs_id"/>
+        <Csr Address="0x10024014" Bits="32" Name="csdef" RTL="TLSPI:spi_0_1.ctrl_cs_dflt_{0..3}"/>
+        <Csr Address="0x10024018" Bits="32" Name="csmode" RTL="TLSPI:spi_0_1.ctrl_cs_mode"/>
+        <Csr Address="0x10024028" Bits="32" Name="delay0" RTL="TLSPI:spi_0_1.ctrl_dla_cssck|ctrl_dla_sckcs"/>
+        <Csr Address="0x1002402C" Bits="32" Name="delay1" RTL="TLSPI:spi_0_1.ctrl_dla_intercs|ctrl_dla_interxfr"/>
+        <Csr Address="0x10024040" Bits="32" Name="fmt"
+             RTL="TLSPI:spi_0_1.ctrl_fmt_proto|ctrl_fmt_endian|ctrl_fmt_iodir|ctrl_fmt_len"/>
+        <Csr Address="0x10024048" Bits="32" Name="txdata" RTL="TLSPI:spi_0_1.fifo_io_tx_bits (wire)"/>
+        <Csr Address="0x1002404C" Bits="32" Name="rxdata" RTL="TLSPI:spi_0_1.fifo_io_rx_bits (wire)"/>
+        <Csr Address="0x10024050" Bits="32" Name="txmark" RTL="TLSPI:spi_0_1.ctrl_wm_tx"/>
+        <Csr Address="0x10024054" Bits="32" Name="rxmark" RTL="TLSPI:spi_0_1.ctrl_wm_rx"/>
+        <Csr Address="0x10024070" Bits="32" Name="ie" RTL="TLSPI:spi_0_1.ie_txwm|ie_rxwm"/>
+        <Csr Address="0x10024074" Bits="32" Name="ip" RTL="TLSPI:spi_0_1.fifo_io_ip_txwm|fifo_io_ip_rxwm (wire)"/>
+    </Device>
+
+    <Device Name="PWM 1">
+        <Csr Address="0x10025000" Bits="32" Name="pwmcfg"
+             RTL="TLPWM_1:pwm_1_1.PWMTimer_1:pwm.scale|sticky|zerocmp|deglitch|countAlways|oneShot|center_{0..3}|gang_{0..3}|ip_{0..3}"/>
+        <Csr Address="0x10025008" Bits="32" Name="pwmcount"
+             RTL="TLPWM_1:pwm_1_1.PWMTimer_1:pwm.__anonymous [Cat.scala 30] (wire)"/>
+        <Csr Address="0x10025010" Bits="32" Name="pwms" RTL="TLPWM_1:pwm_1_1.PWMTimer_1:pwm.s (wire)"/>
+        <Csr Address="0x10025020" Bits="32" Name="pwmcmp0" RTL="TLPWM_1:pwm_1_1.PWMTimer_1:pwm.cmp_0"/>
+        <Csr Address="0x10025024" Bits="32" Name="pwmcmp1" RTL="TLPWM_1:pwm_1_1.PWMTimer_1:pwm.cmp_1"/>
+        <Csr Address="0x10025028" Bits="32" Name="pwmcmp2" RTL="TLPWM_1:pwm_1_1.PWMTimer_1:pwm.cmp_2"/>
+        <Csr Address="0x1002502C" Bits="32" Name="pwmcmp3" RTL="TLPWM_1:pwm_1_1.PWMTimer_1:pwm.cmp_3"/>
+    </Device>
+
+    <Device Name="QSPI 2">
+        <Csr Address="0x10034000" Bits="32" Name="sckdiv" RTL="TLSPI_1:spi_1_1.ctrl_sck_div"/>
+        <Csr Address="0x10034004" Bits="32" Name="sckmode" RTL="TLSPI_1:spi_1_1.ctrl_sck_pha|ctrl_sck_pol"/>
+        <Csr Address="0x10034010" Bits="32" Name="csid" RTL="TLSPI_1:spi_1_1.ctrl_cs_id"/>
+        <Csr Address="0x10034014" Bits="32" Name="csdef" RTL="TLSPI_1:spi_1_1.ctrl_cs_dflt_0"/>
+        <Csr Address="0x10034018" Bits="32" Name="csmode" RTL="TLSPI_1:spi_1_1.ctrl_cs_mode"/>
+        <Csr Address="0x10034028" Bits="32" Name="delay0" RTL="TLSPI_1:spi_1_1.ctrl_dla_cssck|ctrl_dla_sckcs"/>
+        <Csr Address="0x1003402C" Bits="32" Name="delay1" RTL="TLSPI_1:spi_1_1.ctrl_dla_intercs|ctrl_dla_interxfr"/>
+        <Csr Address="0x10034040" Bits="32" Name="fmt"
+             RTL="TLSPI_1:spi_1_1.ctrl_fmt_proto|ctrl_fmt_endian|ctrl_fmt_iodir|ctrl_fmt_len"/>
+        <Csr Address="0x10034048" Bits="32" Name="txdata" RTL="TLSPI_1:spi_1_1.fifo_io_tx_bits (wire)"/>
+        <Csr Address="0x1003404C" Bits="32" Name="rxdata" RTL="TLSPI_1:spi_1_1.fifo_io_rx_bits (wire)"/>
+        <Csr Address="0x10034050" Bits="32" Name="txmark" RTL="TLSPI_1:spi_1_1.ctrl_wm_tx"/>
+        <Csr Address="0x10034054" Bits="32" Name="rxmark" RTL="TLSPI_1:spi_1_1.ctrl_wm_rx"/>
+        <Csr Address="0x10034070" Bits="32" Name="ie" RTL="TLSPI_1:spi_1_1.ie_txwm|ie_rxwm"/>
+        <Csr Address="0x10034074" Bits="32" Name="ip" RTL="TLSPI_1:spi_1_1.fifo_io_ip_txwm|fifo_io_ip_rxwm (wire)"/>
+    </Device>
+
+    <Device Name="PWM 2">
+        <Csr Address="0x10035000" Bits="32" Name="pwmcfg"
+             RTL="TLPWM_2:pwm_2_1.PWMTimer_1:pwm.scale|sticky|zerocmp|deglitch|countAlways|oneShot|center_{0..3}|gang_{0..3}|ip_{0..3}"/>
+        <Csr Address="0x10035008" Bits="32" Name="pwmcount"
+             RTL="TLPWM_2:pwm_2_1.PWMTimer_1:pwm.__anonymous [Cat.scala 30] (wire)"/>
+        <Csr Address="0x10035010" Bits="32" Name="pwms" RTL="TLPWM_2:pwm_2_1.PWMTimer_1:pwm.s (wire)"/>
+        <Csr Address="0x10035020" Bits="32" Name="pwmcmp0" RTL="TLPWM_2:pwm_2_1.PWMTimer_1:pwm.cmp_0"/>
+        <Csr Address="0x10035024" Bits="32" Name="pwmcmp1" RTL="TLPWM_2:pwm_2_1.PWMTimer_1:pwm.cmp_1"/>
+        <Csr Address="0x10035028" Bits="32" Name="pwmcmp2" RTL="TLPWM_2:pwm_2_1.PWMTimer_1:pwm.cmp_2"/>
+        <Csr Address="0x1003502C" Bits="32" Name="pwmcmp3" RTL="TLPWM_2:pwm_2_1.PWMTimer_1:pwm.cmp_3"/>
+    </Device>
+
+    <Device Name="QSPI 0 Flash">
+        <MemoryRegion Type="ROM" From="0x20000000" To="0x3FFFFFFF" Name="Integrated Flash Memory (512 MiB)"/>
+    </Device>
+
+    <Device Name="QEMU Terminator">
+        <MemoryRegion From="0x10037004" To="0x10037007" Name="FEAR5:kill_device"/>
+    </Device>
+
+    <!-- Core Memory (RAM: Data Tightly Integrated Memory (16kB)) -->
+    <MemoryRegion Type="RAM" From="0x80000000" To="0x80003FFF" Name="DTIM"/>
+
+</IsaSubset>

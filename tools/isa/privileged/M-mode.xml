@@ -1,0 +1,128 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="M-mode">
+  <!-- Privileged ISA (Machine) - According to Privileged Spec. Version 20190608-Priv-MSU-Ratified -->
+
+  <!-- Machine Information Registers -->
+  <Csr Number="0xF11" Access="RO" Name="mvendorid" Group="Machine Information Registers" Description="Vendor ID" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xF12" Access="RO" Name="marchid" Group="Machine Information Registers" Description="Architecture ID" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xF13" Access="RO" Name="mimpid" Group="Machine Information Registers" Description="Implementation ID" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xF14" Access="RO" Name="mhartid" Group="Machine Information Registers" Description="Hardware thread ID" Qemu="CPURISCVState.mhartid" />
+
+  <!-- Machine Trap Setup -->
+  <Csr Number="0x300" Access="R/W" Name="mstatus" Group="Machine Trap Setup" Description="Machine status register" Qemu="CPURISCVState.mstatus" />
+  <Csr Number="0x301" Access="R/W" Name="misa" Group="Machine Trap Setup" Description="ISA and extensions" Qemu="CPURISCVState.misa" />
+  <Csr Number="0x302" Access="R/W" Name="medeleg" Group="Machine Trap Setup" Description="Machine exception delegation register" Qemu="CPURISCVState.medeleg" />
+  <Csr Number="0x303" Access="R/W" Name="mideleg" Group="Machine Trap Setup" Description="Machine interrupt delegation register" Qemu="CPURISCVState.mideleg" />
+  <Csr Number="0x304" Access="R/W" Name="mie" Group="Machine Trap Setup" Description="Machine interrupt-enable register" Qemu="CPURISCVState.mie" />
+  <Csr Number="0x305" Access="R/W" Name="mtvec" Group="Machine Trap Setup" Description="Machine trap-handler base address" Qemu="CPURISCVState.mtve" />
+  <Csr Number="0x306" Access="R/W" Name="mcounteren" Group="Machine Trap Setup" Description="Machine counter enable" Qemu="CPURISCVState.mcounteren" />
+  <Csr Number="0x310" Access="R/W" Name="mstatush" Group="Machine Trap Setup" Description="Upper 32 bits of mstatus" Qemu="CPURISCVState.mstatus" />
+
+  <!-- Machine Trap Handling -->
+  <Csr Number="0x340" Access="R/W" Name="mscratch" Group="Machine Trap Handling" Description="Scratch register for machine trap handlers" Qemu="CPURISCVState.mscratch" />
+  <Csr Number="0x341" Access="R/W" Name="mepc" Group="Machine Trap Handling" Description="Machine exception program counter" Qemu="CPURISCVState.mepc" />
+  <Csr Number="0x342" Access="R/W" Name="mcause" Group="Machine Trap Handling" Description="Machine trap cause" Qemu="CPURISCVState.mcause" />
+  <Csr Number="0x343" Access="R/W" Name="mtval" Group="Machine Trap Handling" Description="Machine bad address or instruction" Qemu="CPURISCVState.mbadaddr" />
+  <Csr Number="0x344" Access="R/W" Name="mip" Group="Machine Trap Handling" Description="Machine interrupt pending" Qemu="CPURISCVState.mip" />
+
+  <!-- Machine Counter/Timers -->
+  <Csr Number="0xB00" Access="R/W" Name="mcycle" Group="Machine Counter / Timers" Description="Machine cycle counter" Qemu="" />
+  <Csr Number="0xB02" Access="R/W" Name="minstret" Group="Machine Counter / Timers" Description="Machine instructions-retired counter" Qemu="" />
+  <Csr Number="0xB03" Access="R/W" Name="mhpmcounter3" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB04" Access="R/W" Name="mhpmcounter4" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB05" Access="R/W" Name="mhpmcounter5" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB06" Access="R/W" Name="mhpmcounter6" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB07" Access="R/W" Name="mhpmcounter7" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB08" Access="R/W" Name="mhpmcounter8" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB09" Access="R/W" Name="mhpmcounter9" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB0A" Access="R/W" Name="mhpmcounter10" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB0B" Access="R/W" Name="mhpmcounter11" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB0C" Access="R/W" Name="mhpmcounter12" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB0D" Access="R/W" Name="mhpmcounter13" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB0E" Access="R/W" Name="mhpmcounter14" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB0F" Access="R/W" Name="mhpmcounter15" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB10" Access="R/W" Name="mhpmcounter16" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB11" Access="R/W" Name="mhpmcounter17" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB12" Access="R/W" Name="mhpmcounter18" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB13" Access="R/W" Name="mhpmcounter19" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB14" Access="R/W" Name="mhpmcounter20" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB15" Access="R/W" Name="mhpmcounter21" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB16" Access="R/W" Name="mhpmcounter22" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB17" Access="R/W" Name="mhpmcounter23" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB18" Access="R/W" Name="mhpmcounter24" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB19" Access="R/W" Name="mhpmcounter25" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB1A" Access="R/W" Name="mhpmcounter26" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB1B" Access="R/W" Name="mhpmcounter27" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB1C" Access="R/W" Name="mhpmcounter28" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB1D" Access="R/W" Name="mhpmcounter29" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB1E" Access="R/W" Name="mhpmcounter30" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB1F" Access="R/W" Name="mhpmcounter31" Group="Machine Counter / Timers" Description="Machine performance-monitoring counter" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB80" Access="R/W" Name="mcycleh" Group="Machine Counter / Timers" Description="Upper 32 bits of mcycle" Qemu="" />
+  <Csr Number="0xB82" Access="R/W" Name="minstreth" Group="Machine Counter / Timers" Description="Upper 32 bits of minstret" Qemu="" />
+  <Csr Number="0xB83" Access="R/W" Name="mhpmcounter3h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter3" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB84" Access="R/W" Name="mhpmcounter4h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter4" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB85" Access="R/W" Name="mhpmcounter5h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter5" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB86" Access="R/W" Name="mhpmcounter6h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter6" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB87" Access="R/W" Name="mhpmcounter7h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter7" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB88" Access="R/W" Name="mhpmcounter8h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter8" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB89" Access="R/W" Name="mhpmcounter9h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter9" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB8A" Access="R/W" Name="mhpmcounter10h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter10" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB8B" Access="R/W" Name="mhpmcounter11h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter11" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB8C" Access="R/W" Name="mhpmcounter12h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter12" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB8D" Access="R/W" Name="mhpmcounter13h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter13" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB8E" Access="R/W" Name="mhpmcounter14h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter14" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB8F" Access="R/W" Name="mhpmcounter15h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter15" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB90" Access="R/W" Name="mhpmcounter16h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter16" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB91" Access="R/W" Name="mhpmcounter17h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter17" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB92" Access="R/W" Name="mhpmcounter18h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter18" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB93" Access="R/W" Name="mhpmcounter19h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter19" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB94" Access="R/W" Name="mhpmcounter20h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter20" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB95" Access="R/W" Name="mhpmcounter21h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter21" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB96" Access="R/W" Name="mhpmcounter22h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter22" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB97" Access="R/W" Name="mhpmcounter23h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter23" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB98" Access="R/W" Name="mhpmcounter24h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter24" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB99" Access="R/W" Name="mhpmcounter25h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter25" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB9A" Access="R/W" Name="mhpmcounter26h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter26" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB9B" Access="R/W" Name="mhpmcounter27h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter27" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB9C" Access="R/W" Name="mhpmcounter28h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter28" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB9D" Access="R/W" Name="mhpmcounter29h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter29" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB9E" Access="R/W" Name="mhpmcounter30h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter30" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0xB9F" Access="R/W" Name="mhpmcounter31h" Group="Machine Counter / Timers" Description="Upper 32 bits of mhpmcounter31" Qemu="__HARDWIRED_ZERO__" />
+
+  <!-- Machine Counter Setup -->
+  <Csr Number="0x320" Access="R/W" Name="mcountinhibit" Group="Machine Counter Setup" Description="Machine counter-inhibit register" Qemu="CPURISCVState.mcounteren" />
+  <Csr Number="0x323" Access="R/W" Name="mhpmevent3" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x324" Access="R/W" Name="mhpmevent4" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x325" Access="R/W" Name="mhpmevent5" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x326" Access="R/W" Name="mhpmevent6" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x327" Access="R/W" Name="mhpmevent7" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x328" Access="R/W" Name="mhpmevent8" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x329" Access="R/W" Name="mhpmevent9" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x32A" Access="R/W" Name="mhpmevent10" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x32B" Access="R/W" Name="mhpmevent11" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x32C" Access="R/W" Name="mhpmevent12" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x32D" Access="R/W" Name="mhpmevent13" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x32E" Access="R/W" Name="mhpmevent14" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x32F" Access="R/W" Name="mhpmevent15" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x330" Access="R/W" Name="mhpmevent16" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x331" Access="R/W" Name="mhpmevent17" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x332" Access="R/W" Name="mhpmevent18" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x333" Access="R/W" Name="mhpmevent19" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x334" Access="R/W" Name="mhpmevent20" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x335" Access="R/W" Name="mhpmevent21" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x336" Access="R/W" Name="mhpmevent22" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x337" Access="R/W" Name="mhpmevent23" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x338" Access="R/W" Name="mhpmevent24" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x339" Access="R/W" Name="mhpmevent25" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x33A" Access="R/W" Name="mhpmevent26" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x33B" Access="R/W" Name="mhpmevent27" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x33C" Access="R/W" Name="mhpmevent28" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x33D" Access="R/W" Name="mhpmevent29" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x33E" Access="R/W" Name="mhpmevent30" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+  <Csr Number="0x33F" Access="R/W" Name="mhpmevent31" Group="Machine Counter Setup" Description="Machine performance-monitoring event selector" Qemu="__HARDWIRED_ZERO__" />
+
+  <Instruction Opcode="0x00000073" Mask="0xffffffff" Name="ECALL" Kind="env-call-break" Operands="" Format="I" />
+  <Instruction Opcode="0x00100073" Mask="0xffffffff" Name="EBREAK" Kind="env-call-break" Operands="" Format="I" />
+  <Instruction Opcode="0x30200073" Mask="0xffffffff" Name="MRET" Kind="trap-return machine" Operands="" Format="R" />
+  <Instruction Opcode="0x10500073" Mask="0xffffffff" Name="WFI" Kind="interrupt-management" Operands="" Format="R" />
+</IsaSubset>

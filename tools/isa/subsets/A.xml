@@ -1,0 +1,14 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="A">
+  <Instruction Opcode="0x1000202f" Mask="0xf9f0707f" Name="LR.W" Kind="load-reserved" Operands="aq,rl,rs1,rd" Format="R" />
+  <Instruction Opcode="0x1800202f" Mask="0xf800707f" Name="SC.W" Kind="store-conditional" Operands="aq,rl,rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x0800202f" Mask="0xf800707f" Name="AMOSWAP.W" Kind="atomic-memop" Operands="aq,rl,rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x0000202f" Mask="0xf800707f" Name="AMOADD.W" Kind="atomic-memop" Operands="aq,rl,rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x2000202f" Mask="0xf800707f" Name="AMOXOR.W" Kind="atomic-memop" Operands="aq,rl,rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x6000202f" Mask="0xf800707f" Name="AMOAND.W" Kind="atomic-memop" Operands="aq,rl,rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x4000202f" Mask="0xf800707f" Name="AMOOR.W" Kind="atomic-memop" Operands="aq,rl,rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x8000202f" Mask="0xf800707f" Name="AMOMIN.W" Kind="atomic-memop" Operands="aq,rl,rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0xa000202f" Mask="0xf800707f" Name="AMOMAX.W" Kind="atomic-memop" Operands="aq,rl,rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0xc000202f" Mask="0xf800707f" Name="AMOMINU.W" Kind="atomic-memop" Operands="aq,rl,rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0xe000202f" Mask="0xf800707f" Name="AMOMAXU.W" Kind="atomic-memop" Operands="aq,rl,rs2,rs1,rd" Format="R" />
+</IsaSubset>

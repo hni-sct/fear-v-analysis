@@ -1,0 +1,101 @@
+{% load static %}
+
+div.relevance-table {
+    display: table;
+    border-collapse:separate;
+    border-spacing:10px 5px;
+}
+
+div.chart {
+    display: table-cell; 
+    vertical-align:bottom;
+}
+
+div.chart div.chart__text {
+    padding-left: 10px; 
+    font-size: 1.4em;
+}
+div.chart.chart--small div.chart__text {
+    margin-top: 60px;
+}
+div.chart.chart--large div.chart__text {
+    margin-top: 0px;
+}
+
+div.chart div.chart__donut {
+    margin-top: 10px;
+}
+div.chart.chart--small div.chart__donut {
+    width: 180px;
+    height: 180px;
+}
+div.chart.chart--large div.chart__donut {
+    width: 260px;
+    height: 260px;
+}
+
+div.chart__donut > div {
+    position:absolute;
+    display: table;
+    width: inherit;
+    height: inherit;
+}
+
+div.chart__donut > canvas {
+    position:absolute;
+}
+
+div.chart__donut > div > div {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Percent in donut circle */
+div.chart div.percent {
+    font-weight: bold;
+}
+div.chart.chart--small div.percent {
+    font-size: 1.45em;
+}
+div.chart.chart--large div.percent {
+    font-size: 2.4em;
+}
+div.chart.chart--small div.ratio {
+    font-size: 0.7em;
+}
+div.chart.chart--large div.ratio {
+    font-size: 0.9em;
+}
+
+div.donutlegend {
+    display:table-cell;
+    vertical-align:bottom;
+    height:260px;
+    border:0px; 
+    border-spacing:10px 5px; 
+    border-collapse:separate; 
+    background-color: #FFFFFF;
+    margin:-10px;
+}
+
+div.donutlegend > div > div {
+    display:table-cell;
+    vertical-align: middle;
+}
+
+div.donutlegend > div > div:first-child {
+    width:25px;
+    height:50px;
+}
+
+div.donutlegend > div > div:nth-child(2) {
+    width: 120px; 
+}
+
+/*div.chart-legend li span{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+	}*/

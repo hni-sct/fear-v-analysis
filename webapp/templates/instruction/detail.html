@@ -1,0 +1,151 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+{% load text_colorizer %}
+{% load bittags %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% url 'css' 'encoding.css' %}">
+{% endblock %}
+
+{% block title %}{{instruction.arch.name}} Instruction Set Details{% endblock %}
+
+{% block body %}
+<div class="section-block">
+	<table class="instruction">
+		{% include "base/instruction.html" with encheader="Encoding" %}
+	</table>
+</div>
+<div id="tabs">
+  <ul>
+	<li style="padding: 0px 20px;"><span style="font-size: 1.5em; font-weight: bold;">Number of bitflips:</span></li>
+{% for i in "xxx" %}
+	<li><a href="#fragment-{{forloop.counter}}">{{forloop.counter}}</a></li>
+{% endfor %}
+  </ul>
+{% for i in "xxx" %}
+  {% with distance=forloop.counter %}
+  <div id="fragment-{{forloop.counter}}">
+	<table class="insnfaultpiechart">
+	<tr>
+		<td>
+			<ul>
+				<li>There are $\binom { {{instruction.bits}} } { {{distance}} }$ = {{instruction.bits|binom:distance}} faults with {{distance}} bitflip(s).</li>
+				<li>Skip <span id="dc_count_{{distance}}"></span> faults which modify don't care bits only.</li>
+				<li>Skip <span id="illegal_count_{{distance}}"></span> faults which lead to illegal instructions.</li>
+				<li>Only run the remaining fault effect simulations.</li>
+			</ul>
+		</td>
+		<td>
+			<canvas id="chart-area-{{distance}}" class="faultpiechart" width="200" height="200"></canvas>
+		</td>
+		<td style="white-space:nowrap;">
+			<div id="chart-area-{{distance}}-legend" style="vertical-align:middle;"></div>
+		</td>
+	</tr>
+    </table>
+  </div>
+  {% endwith %}
+{% endfor %}
+
+</div>
+{% endblock %} 
+
+{% block scripts %}
+<script>
+var options = {
+	legend: {
+		display: false
+	},
+	cutoutPercentage: 60,
+	tooltips: {
+		enabled: true,
+		titleFontSize: 10,
+		bodyFontSize: 10,
+		footerFontSize: 10,
+	},
+	legendCallback: drawFaultPieLegend,
+	responsive: true,
+};
+
+function roundToTwo(num) {    
+    return +(Math.round(num + "e+2")  + "e-2");
+}
+
+function drawFaultPieChart(widgetId, instruction, distance) {
+	$.getJSON("/webapp/json/chartdata/" + instruction + "/" + distance + "/", function(data) {
+	    var widget = $("#" + widgetId);
+	    var chart = new Chart(widget, {
+	        type: 'doughnut',
+			data: {
+				labels: [
+					"No effect (Don't care)",
+                    "Illegal opcode",
+                    "Opcode modified",
+                    "Parameter modified",
+                    "Both modified"
+				],
+				datasets: [
+					{
+						data: data.piedata,
+						borderWidth: 2,
+						backgroundColor: [ "#404040", "#808080", "#ff8080", "#ffdf80", "#ffbf80" ],
+						textColor: [ "#FFFFFF", "#000000", "#000000", "#000000", "#000000" ],
+						total: data.total,
+					},
+				],
+			},
+	        options: options
+	    });
+		
+		$("#" + widgetId + "-legend").html(chart.generateLegend());
+    $("#dc_count_" + distance).html(data.piedata[0]);
+    $("#illegal_count_" + distance).html(data.piedata[1]);
+    
+    });
+}
+
+function drawFaultPieLegend(chart) {
+    var text = [];
+	text.push('<div style="display:table; background-color: #FFFFFF; border-collapse: separate; border-spacing: 2px;">');
+    for (var i=0; i<chart.data.datasets[0].data.length; i++) {
+		//if (chart.data.datasets[0].data[i] != 0) {
+			text.push('<div style="display:table-row;">');
+            text.push('<div class="pie-legend-number" style="color: ' + chart.data.datasets[0].textColor[i] + '; background-color:' + chart.data.datasets[0].backgroundColor[i] + ';">');
+			var percent = 100.0 * (chart.data.datasets[0].data[i] / chart.data.datasets[0].total);			
+			text.push("<b>" + chart.data.datasets[0].data[i] + "</b><br>(" + roundToTwo(percent) + "%)");
+			text.push('</div>');
+			
+            if (chart.data.labels[i]) {
+                text.push('<div class="pie-legend-text">' + chart.data.labels[i] + '</div>');
+            }
+			text.push('</div>');
+		//}
+    }
+	text.push('</div>');
+    return text.join("");
+}
+
+window.onload = function()
+{
+	drawFaultPieChart("chart-area-1", {{instruction.id}}, 1);
+	drawFaultPieChart("chart-area-2", {{instruction.id}}, 2);
+	drawFaultPieChart("chart-area-3", {{instruction.id}}, 3);
+	
+	var scrollId = Math.max(1, ({{instruction.id}}));
+
+	$('html, nav').animate({
+		scrollTop:$("#nav-" + scrollId).offset().top - $('nav').offset().top
+	},'slow');
+	
+	$( "#tabs" ).tabs({
+		active: 0,
+	    show: { effect: "false" }
+	});
+	
+	$.getJSON("/webapp/json/encoding/" + {{instruction.id}} + "/", function(data) {
+	    var enc = new myd3.enc(data.data, null, 'encDiv');
+    });
+};
+</script>
+{% endblock %}

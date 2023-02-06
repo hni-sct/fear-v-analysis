@@ -1,0 +1,30 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+{% load bittags %}
+
+{% block title %}Architecture overview for {{arch.name}}{% endblock %}
+
+{% block body %}
+<style>
+  table { width: 100%; margin-bottom: 25px; }
+  td { border: 1px solid black; text-align: left; }
+  th { border: 1px solid black; text-align: left; font-weight: bold; }
+</style>
+
+<h1>Main menu for architecture {{arch.name}}</h1>
+
+<ul>
+  <li><a href="{% url 'architecture' arch.id %}">This page</a></li>
+  <li><a href="{% url 'architecture_mapping' arch.id %}">QEMU and RTL mapping</a></li>
+  <li><a href="{% url 'architecture_faults' arch.id %}">Overview of instruction faults</a></li>
+  <li>Software lists:
+    <ul>
+    {% for sl in slists %}
+      <li><a href="{% url 'softwarelist' sl.id %}">{{sl.name}} ({{sl.id}})</a></li>
+    {% endfor %}
+    </ul>
+  </li>
+</ul>
+
+{% endblock %}

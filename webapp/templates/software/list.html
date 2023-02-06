@@ -1,0 +1,353 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+{% load text_colorizer %}
+
+{% block title %}{{arch_name}} Softwarelist Coverage Analysis{% endblock %}
+
+{% block body %}
+<style>
+  table { width: 100%; margin-bottom: 25px; }
+  td { border: 1px solid black; text-align: left; }
+  th { border: 1px solid black; text-align: left; width: 250px; font-weight: normal; }
+</style>
+
+<h1>Aggregated coverage analysis of TestSW-List '{{slist.name}}':</h1>
+
+<!-- SW-LIST / ARCH INFORMATION -->
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">Software List</td></tr>
+  <tr>
+    <th>Name</th>
+    <td>{{slist.name}}</td>
+  </tr>
+  <tr>
+    <th>Program Count</th>
+    <td>{{slist.software.count}}</td>
+  </tr>
+  <tr>
+    <th>RISC-V ISA</th>
+    <td>{{slist.software.first.arch.name}}</td>
+  </tr>
+</table>
+
+{% with a=slist.aggregate_all %}
+<h3>HW Execution Summary</h3>
+<table>
+  <tr>
+    <th>Type</th>
+    <th># Reads</th>
+    <th># Writes</th>
+    <th># Total</th>
+  </tr>
+  <tr>
+    <td>GPRs</td>
+    <td>{{a.gpr.r}}</td>
+    <td>{{a.gpr.w}}</td>
+    <td>{{a.gpr.x}}</td>
+  </tr>
+  {% if covered_fprs|length > 0 or missing_fprs|length > 0 %}
+  <tr>
+    <td>FPRs</td>
+    <td colspan="3"></td>
+  </tr>
+  {% endif %}
+  {% if covered_csrs|length > 0 or missing_csrs|length > 0 %}
+  <tr>
+    <td>Core CSRs</td>
+    <td>{{a.csr.r}}</td>
+    <td>{{a.csr.w}}</td>
+    <td>{{a.csr.x}}</td>
+  </tr>
+  {% endif %}
+  <tr>
+    <td>Instruction Instances</td>
+    <td colspan="2"></td>
+    <td>{{a.insn.instances}}</td>
+  </tr>
+  <tr>
+    <td>Instruction Executions</td>
+    <td colspan="2"></td>
+    <td>{{a.insn.x}}</td>
+  </tr>
+  {% if covered_dcsrs|length > 0 or missing_dcsrs|length > 0 %}
+  <tr>
+    <td>Device CSRs</td>
+    <td>{{a.dcsr.r}}</td>
+    <td>{{a.dcsr.w}}</td>
+    <td>{{a.dcsr.x}}</td>
+  </tr>
+  {% endif %}
+  {% if covered_mr|length > 0 or missing_mr|length > 0 %}
+  <tr>
+    <td>Memory Accesses</td>
+    <td>{{a.mr.r}}</td>
+    <td>{{a.mr.w}}</td>
+    <td>{{a.mr.x}}</td>
+  </tr>
+  {% endif %}
+</table>
+{% endwith %}
+
+<h1>Registers:</h1>
+
+<!-- GENERAL PURPOSE REGISTERS -->
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">General Purpose Registers (GPR)</td></tr>
+  <tr>
+    <th>Covered</th>
+    <td>{{covered_gprs}}</td>
+  </tr>
+  <tr>
+    <th>Not covered</th>
+    <td>{{missing_gprs}}</td>
+  </tr>
+  <tr>
+    <th>Coverage Ratio</th>
+    <td>{{r_gprs}}%</td>
+  </tr>
+</table>
+
+<!-- GENERAL PURPOSE REGISTERS -->
+{% if covered_fprs|length > 0 or missing_fprs|length > 0 %}
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">Floating Point Registers (FPR)</td></tr>
+  <tr>
+    <th>Covered</th>
+    <td>{{covered_fprs}}</td>
+  </tr>
+  <tr>
+    <th>Not covered</th>
+    <td>{{missing_fprs}}</td>
+  </tr>
+  <tr>
+    <th>Coverage Ratio</th>
+    <td>{{r_fprs}}%</td>
+  </tr>
+</table>
+{% endif %}
+
+<!-- CONTROL AND STATUS REGISTERS -->
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">Control and Status Registers (CSR)</td></tr>
+  <tr>
+    <th>Covered</th>
+    <td>{{covered_csrs}}</td>
+  </tr>
+  <tr>
+    <th>Not covered</th>
+    <td>{{missing_csrs}}</td>
+  </tr>
+  <tr>
+    <th>Coverage Ratio</th>
+    <td>{{r_csrs}}%</td>
+  </tr>
+</table>
+
+<h1>Instructions:</h1>
+
+<!-- INSTRUCTION COVERAGE AGGREGATED -->
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">All Instructions (Coverage: {{r_instructions}}%)</td></tr>
+  <tr>
+    <th>Covered</th>
+    <td>{{covered_instructions}}</td>
+  </tr>
+  <tr>
+    <th>Not covered</th>
+    <td>{{missing_instructions}}</td>
+  </tr>
+</table>
+
+<!-- INSTRUCTIONS by Functional Unit -->
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">Instruction Coverages by Functional Unit</td></tr>
+  <tr>
+    <td colspan="=2"><canvas id="myChart" width="400" height="150"></canvas></td>
+  </tr>
+</table>
+
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">Privilege Level: Machine (Coverage: {{r_instructions_machine}}%)</td></tr>
+  <tr>
+    <th>Covered</th>
+    <td>{{covered_instructions_machine}}</td>
+  </tr>
+  <tr>
+    <th>Not covered</th>
+    <td>{{missing_instructions_machine}}</td>
+  </tr>
+</table>
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">Subset: I (Coverage: {{r_instructions_rv32i}}%)</td></tr>
+  <tr>
+    <th>Covered</th>
+    <td>{{covered_instructions_rv32i}}</td>
+  </tr>
+  <tr>
+    <th>Not covered</th>
+    <td>{{missing_instructions_rv32i}}</td>
+  </tr>
+</table>
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">Extension: Zicsr (Coverage: {{r_instructions_rv32icsr}}%)</td></tr>
+  <tr>
+    <th>Covered</th>
+    <td>{{covered_instructions_rv32icsr}}</td>
+  </tr>
+  <tr>
+    <th>Not covered</th>
+    <td>{{missing_instructions_rv32icsr}}</td>
+  </tr>
+</table>
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">Extension: Zifencei (Coverage: {{r_instructions_rv32ifencei}}%)</td></tr>
+  <tr>
+    <th>Covered</th>
+    <td>{{covered_instructions_rv32ifencei}}</td>
+  </tr>
+  <tr>
+    <th>Not covered</th>
+    <td>{{missing_instructions_rv32ifencei}}</td>
+  </tr>
+</table>
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">Subset: M (Coverage: {{r_instructions_rv32m}}%)</td></tr>
+  <tr>
+    <th>Covered</th>
+    <td>{{covered_instructions_rv32m}}</td>
+  </tr>
+  <tr>
+    <th>Not covered</th>
+    <td>{{missing_instructions_rv32m}}</td>
+  </tr>
+</table>
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">Subset: A (Coverage: {{r_instructions_rv32a}}%)</td></tr>
+  <tr>
+    <th>Covered</th>
+    <td>{{covered_instructions_rv32a}}</td>
+  </tr>
+  <tr>
+    <th>Not covered</th>
+    <td>{{missing_instructions_rv32a}}</td>
+  </tr>
+</table>
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">Subset: F (Coverage: {{r_instructions_rv32f}}%)</td></tr>
+  <tr>
+    <th>Covered</th>
+    <td>{{covered_instructions_rv32f}}</td>
+  </tr>
+  <tr>
+    <th>Not covered</th>
+    <td>{{missing_instructions_rv32f}}</td>
+  </tr>
+</table>
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">Subset: D (Coverage: {{r_instructions_rv32d}}%)</td></tr>
+  <tr>
+    <th>Covered</th>
+    <td>{{covered_instructions_rv32d}}</td>
+  </tr>
+  <tr>
+    <th>Not covered</th>
+    <td>{{missing_instructions_rv32d}}</td>
+  </tr>
+</table>
+<table>
+  <tr><td colspan="2" style="font-size: larger; font-weight: bold;">Subset: C (Coverage: {{r_instructions_rv32c}}%)</td></tr>
+  <tr>
+    <th>Covered</th>
+    <td>{{covered_instructions_rv32c}}</td>
+  </tr>
+  <tr>
+    <th>Not covered</th>
+    <td>{{missing_instructions_rv32c}}</td>
+  </tr>
+</table>
+
+<script>
+var barChartData = {
+      labels: ['RV32I: {{r_instructions_rv32i}}%', 
+               'RV32M: {{r_instructions_rv32m}}%', 
+               'RV32A: {{r_instructions_rv32a}}%', 
+               'RV32F: {{r_instructions_rv32f}}%', 
+               'RV32D: {{r_instructions_rv32d}}%', 
+               'RV32C: {{r_instructions_rv32c}}%'],
+      datasets: [{
+        label: 'Covered',
+        backgroundColor: [ 'rgba(255, 99, 132, 1)', 
+                'rgba(54, 162, 235, 1)', 
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)' ],
+        data: [
+          {{covered_instructions_rv32i|length}},
+          {{covered_instructions_rv32m|length}},
+          {{covered_instructions_rv32a|length}},
+          {{covered_instructions_rv32f|length}},
+          {{covered_instructions_rv32d|length}},
+          {{covered_instructions_rv32c|length}}
+        ]
+      }, {
+        label: 'Missing',
+        backgroundColor: [ 'rgba(255, 99, 132, 0.3)', 
+                'rgba(54, 162, 235, 0.3)', 
+                'rgba(255, 206, 86, 0.3)',
+                'rgba(75, 192, 192, 0.3)',
+                'rgba(153, 102, 255, 0.3)',
+                'rgba(255, 159, 64, 0.3)' ],
+        data: [
+          {{missing_instructions_rv32i|length}},
+          {{missing_instructions_rv32m|length}},
+          {{missing_instructions_rv32a|length}},
+          {{missing_instructions_rv32f|length}},
+          {{missing_instructions_rv32d|length}},
+          {{missing_instructions_rv32c|length}}
+        ]
+      }]
+    };
+    window.onload = function() {
+      var ctx = document.getElementById('myChart').getContext('2d');
+      window.myBar = new Chart(ctx, {
+        type: 'bar',
+        data: barChartData,
+        options: {
+          title: {
+            display: false,
+            text: 'Instruction Coverage Overview'
+          },
+          tooltips: {
+            mode: 'index',
+            intersect: false
+          },
+          responsive: true,
+          scales: {
+            xAxes: [{
+              // ticks: {
+              //     // Include a dollar sign in the ticks
+              //     callback: function(value, index, values) {
+              //         return '$' + value;
+              //     }
+              // }
+            //   stacked: true,
+            }],
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: '# Instructions',
+              },
+              ticks: {
+                  beginAtZero: true
+              },
+            //   stacked: true
+            }]
+          }
+        }
+      });
+    };
+</script>
+
+{% endblock %}

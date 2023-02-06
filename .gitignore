@@ -1,0 +1,5 @@
+*.pyc
+.DS_Store
+webapp/migrations/*
+.files/
+**/__pycache__/

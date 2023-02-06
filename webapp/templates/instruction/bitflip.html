@@ -1,0 +1,89 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+{% load text_colorizer %}
+{% load bittags %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% url 'css' 'encoding.css' %}">
+{% endblock %}
+
+{% block title %}{{instruction.arch.name}} Instruction Details{% endblock %}
+
+{% block body %}   
+<div class="section-block">
+	<table class="instruction">
+		{% include "base/instruction.html" with encheader="Encoding /<br>Bit errors" %}
+		<tr>
+			<td>Fault effect(s):</td>
+			<td>
+				<div id="faulteffect_div" style="padding-top:10px;">Select bitflips above to see the effect...</div>
+				<div id="fxDiv"></div>
+			</td>
+		</tr>	  
+	</table>
+</div>  
+{% endblock %} 
+
+{% block scripts %}
+<script type="text/javascript">
+
+var bit_select = [];
+
+var enc = null;
+var fx = null;
+
+var toggle = function(b) {
+	// Deselect b, if possible:
+	if (_.contains(bit_select, b)) {
+		enc.data[b].class = enc.data[b].class.split("_")[0];
+		bit_select = _.without(bit_select, b);
+	} else {
+		
+		// Append new b:
+		enc.data[b].class += "_bitflip";
+		bit_select.push(b);
+	}
+	
+	// Remove first b, if there are already 3 selected:
+	if (bit_select.length > 3) {
+		enc.data[bit_select[0]].class = enc.data[bit_select[0]].class.split("_")[0];
+		bit_select = _.without(bit_select, bit_select[0]);
+		//c = c.split("_")[0];
+	}
+	
+	// Calculate fault mask:
+	var m = 0;
+	for (var f = 0; f < bit_select.length; f++) {
+		var sel_bit = enc.data.length - bit_select[f] - 1;
+		m |= (1<<sel_bit);
+	}
+	
+	$.getJSON("/webapp/json/encoding/" + {{instruction.id}} + "/" + m + "/", function(data) {
+		if (fx == null) {
+	    	fx = new myd3.enc(data.data, { interactive: false }, 'fxDiv');
+		}
+		fx.data = data.data;
+		fx.update();
+    });
+	$("#faulteffect_div").load("/webapp/ajax/faulteffect/" + {{instruction.id}} + "/" + m + "/");
+	
+	enc.update();
+	fx.update();
+}
+
+window.onload = function()
+{
+	$.getJSON("/webapp/json/encoding/" + {{instruction.id}} + "/", function(data) {
+	    enc = new myd3.enc(data.data, { interactive: true }, 'encDiv');
+    });
+
+    var scrollId = Math.max(1, ({{instruction.id}}));
+
+	$('html, nav').animate({
+		scrollTop:$("#nav-" + scrollId).offset().top - $('nav').offset().top
+	},'slow');
+};
+
+</script>
+{% endblock %}

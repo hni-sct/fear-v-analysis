@@ -1,0 +1,50 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="C">
+
+  <Operand Mask="0x0F80" Name="c.rd/rs1" ShortName="rd/rs1" Type="gpr" />
+  <Operand Mask="0x007C" Name="c.rs2" ShortName="rs2" Type="gpr" />
+  <Operand Mask="0x001C" Name="c.rd'" ShortName="rd" Type="gpr" />
+  <Operand Mask="0x001C" Name="c.rs2'" ShortName="rs2" Type="gpr" />
+  <Operand Mask="0x0380" Name="c.rs1'" ShortName="rs1" Type="gpr" />
+  <Operand Mask="0x0380" Name="c.rd'/rs1'" ShortName="rd/rs1" Type="gpr" />
+  <Operand Mask="0x107C" Name="c.imm_ci" ShortName="imm" Type="imm" />
+  <Operand Mask="0x1FE0" Name="c.imm_ciw" ShortName="imm" Type="imm" />
+  <Operand Mask="0x1F80" Name="c.imm_css" ShortName="imm" Type="imm" />
+  <Operand Mask="0x1C60" Name="c.imm_cl" ShortName="imm" Type="imm" />
+  <Operand Mask="0x1C60" Name="c.imm_cs" ShortName="imm" Type="imm" />
+  <Operand Mask="0x107C" Name="c.imm_cb" ShortName="imm" Type="imm" />
+  <Operand Mask="0x107C" Name="c.shamt" ShortName="shamt" Type="imm" />
+  <Operand Mask="0x1FFC" Name="c.jump" ShortName="imm" Type="imm" />
+  <Operand Mask="0x1C7C" Name="c.branch" ShortName="imm" Type="imm" />
+
+  <Instruction Opcode="0x0000" Mask="0xe003" Name="C.ADDI4SPN" Kind="rv32c" Operands="c.imm_ciw,c.rd'" Format="CIW" />
+  <Instruction Opcode="0x2000" Mask="0xe003" Name="C.FLD" Kind="rv32dc" Operands="c.imm_cl,c.rs1',c.rd'" Format="CL" RequiresSubset="D" />
+  <Instruction Opcode="0x4000" Mask="0xe003" Name="C.LW" Kind="rv32c" Operands="c.imm_cl,c.rs1',c.rd'" Format="CL" />
+  <Instruction Opcode="0xa000" Mask="0xe003" Name="C.FSD" Kind="rv32dc" Operands="c.imm_cs,c.rs1',c.rs2'" Format="CS" RequiresSubset="D" />
+  <Instruction Opcode="0xc000" Mask="0xe003" Name="C.SW" Kind="rv32c" Operands="c.imm_cs,c.rs1',c.rs2'" Format="CS" />
+  <Instruction Opcode="0x0001" Mask="0xe003" Name="C.ADDI" Kind="rv32c" Operands="c.imm_ci,c.rd/rs1" Format="CI" />
+  <Instruction Opcode="0x4001" Mask="0xe003" Name="C.LI" Kind="rv32c" Operands="c.imm_ci,c.rd/rs1" Format="CI" />
+  <Instruction Opcode="0x6001" Mask="0xe003" Name="C.LUI" Kind="rv32c" Operands="c.imm_ci,c.rd/rs1" Format="CI" />
+  <Instruction Opcode="0x8001" Mask="0xec03" Name="C.SRLI" Kind="rv32c" Operands="c.shamt,c.rd'/rs1'" Format="CB" />
+  <Instruction Opcode="0x8401" Mask="0xec03" Name="C.SRAI" Kind="rv32c" Operands="c.shamt,c.rd'/rs1'" Format="CB" />
+  <Instruction Opcode="0x8801" Mask="0xec03" Name="C.ANDI" Kind="rv32c" Operands="c.imm_cb,c.rd'/rs1'" Format="CB" />
+  <Instruction Opcode="0x8c01" Mask="0xfc63" Name="C.SUB" Kind="rv32c" Operands="c.rs2',c.rd'/rs1'" Format="CA" />
+  <Instruction Opcode="0x8c21" Mask="0xfc63" Name="C.XOR" Kind="rv32c" Operands="c.rs2',c.rd'/rs1'" Format="CA" />
+  <Instruction Opcode="0x8c41" Mask="0xfc63" Name="C.OR" Kind="rv32c" Operands="c.rs2',c.rd'/rs1'" Format="CA" />
+  <Instruction Opcode="0x8c61" Mask="0xfc63" Name="C.AND" Kind="rv32c" Operands="c.rs2',c.rd'/rs1'" Format="CA" />
+  <Instruction Opcode="0xa001" Mask="0xe003" Name="C.J" Kind="rv32c control-transfer" Operands="c.jump" Format="CJ" />
+  <Instruction Opcode="0xc001" Mask="0xe003" Name="C.BEQZ" Kind="rv32c control-transfer conditional" Operands="c.branch,c.rs1'" Format="CB" />
+  <Instruction Opcode="0xe001" Mask="0xe003" Name="C.BNEZ" Kind="rv32c control-transfer conditional" Operands="c.branch,c.rs1'" Format="CB" />
+  <Instruction Opcode="0x0002" Mask="0xe003" Name="C.SLLI" Kind="rv32c" Operands="c.shamt,c.rd/rs1" Format="CI" />
+  <Instruction Opcode="0x2002" Mask="0xe003" Name="C.FLDSP" Kind="rv32dc" Operands="c.imm_ci,c.rd/rs1" Format="CI" RequiresSubset="D" />
+  <Instruction Opcode="0x4002" Mask="0xe003" Name="C.LWSP" Kind="rv32c" Operands="c.imm_ci,c.rd/rs1" Format="CI" />
+  <Instruction Opcode="0x8002" Mask="0xf003" Name="C.MV" Kind="rv32c" Operands="c.rs2,c.rd/rs1" Format="CR" />
+  <Instruction Opcode="0x9002" Mask="0xf003" Name="C.ADD" Kind="rv32c" Operands="c.rs2,c.rd/rs1" Format="CR" />
+  <Instruction Opcode="0xa002" Mask="0xe003" Name="C.FSDSP" Kind="rv32dc" Operands="c.imm_css,c.rs2" Format="CSS" RequiresSubset="D" />
+  <Instruction Opcode="0xc002" Mask="0xe003" Name="C.SWSP" Kind="rv32c" Operands="c.imm_css,c.rs2" Format="CSS" />
+  <Instruction Opcode="0x6000" Mask="0xe003" Name="C.FLW" Kind="rv32fc" Operands="c.imm_cl,c.rs1',c.rd'" Format="CL" RequiresSubset="F" />
+  <Instruction Opcode="0xe000" Mask="0xe003" Name="C.FSW" Kind="rv32fc" Operands="c.imm_cs,c.rs1',c.rs2'" Format="CS" RequiresSubset="F" />
+  <Instruction Opcode="0x2001" Mask="0xe003" Name="C.JAL" Kind="rv32c control-transfer" Operands="c.jump" Format="CJ" />
+  <Instruction Opcode="0x6002" Mask="0xe003" Name="C.FLWSP" Kind="rv32fc" Operands="c.imm_ci,c.rd/rs1" Format="CI" RequiresSubset="F" />
+  <Instruction Opcode="0xe002" Mask="0xe003" Name="C.FSWSP" Kind="rv32fc" Operands="c.imm_css,c.rs2" Format="CSS" RequiresSubset="F" />
+</IsaSubset>

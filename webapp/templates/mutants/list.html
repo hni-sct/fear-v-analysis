@@ -1,0 +1,46 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+{% load bittags %}
+{% load text_colorizer %}
+
+{% block title %}MutantList for Software {{ml.software.name}}{% endblock %}
+
+{% block body %}
+<style>
+  table { width: 100%; margin-bottom: 25px; }
+  td { border: 1px solid black; text-align: left; }
+  th { border: 1px solid black; text-align: left; font-weight: bold; }
+</style>
+
+<!-- <h1 style="color:red;">TO DO: Pre-fetch results to speed up display!</h1> -->
+
+<h1>MutantList for Software {{ml.software.name}}</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Kind</th>
+    <th>Address</th>
+    <th>Bitflip</th>
+    <th>Detected Error</th>
+    <th>Time (us)</th>
+  </tr>
+{% for m in mutants %}
+<tr>
+  <td>{{m.id}}</td>
+  <td>{{m.kind}}</td>
+  <td>
+    {% if m.kind == "p.IMEM" or m.kind == "p.IFR" %}
+    {{m.nr_or_address|hex:32}}
+    {% else %}
+    {{m.nr_or_address}}
+    {% endif %}
+  </td>
+  <td>{{m.bitflip|hex:32}}</td>
+  <td>{{m.detected_error}}</td>
+  <td>{{m.runtime}}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

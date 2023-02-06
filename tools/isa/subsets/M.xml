@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="M">
+  <Instruction Opcode="0x02000033" Mask="0xfe00707f" Name="MUL" Kind="mul" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x02001033" Mask="0xfe00707f" Name="MULH" Kind="mul" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x02002033" Mask="0xfe00707f" Name="MULHSU" Kind="mul" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x02003033" Mask="0xfe00707f" Name="MULHU" Kind="mul" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x02004033" Mask="0xfe00707f" Name="DIV" Kind="div" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x02005033" Mask="0xfe00707f" Name="DIVU" Kind="div" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x02006033" Mask="0xfe00707f" Name="REM" Kind="div" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x02007033" Mask="0xfe00707f" Name="REMU" Kind="div" Operands="rs2,rs1,rd" Format="R" />
+</IsaSubset>

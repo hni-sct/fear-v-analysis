@@ -1,0 +1,94 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="I">
+  <!-- General Purpose Registers -->
+  <Gpr Name="x01" AbiName="ra" Description="Return address" Number="1" Qemu="CPURISCVState.gpr[1]" />
+  <Gpr Name="x02" AbiName="sp" Description="Stack pointer" Number="2" Qemu="CPURISCVState.gpr[2]" />
+  <Gpr Name="x03" AbiName="gp" Description="Global pointer" Number="3" Qemu="CPURISCVState.gpr[3]" />
+  <Gpr Name="x04" AbiName="tp" Description="Thread pointer" Number="4" Qemu="CPURISCVState.gpr[4]" />
+  <Gpr Name="x05" AbiName="t0" Description="Temporary" Number="5" Qemu="CPURISCVState.gpr[5]" />
+  <Gpr Name="x06" AbiName="t1" Description="Temporary" Number="6" Qemu="CPURISCVState.gpr[6]" />
+  <Gpr Name="x07" AbiName="t2" Description="Temporary" Number="7" Qemu="CPURISCVState.gpr[7]" />
+  <Gpr Name="x08" AbiName="s0" Description="Saved register/frame pointer" Number="8" Qemu="CPURISCVState.gpr[8]" />
+  <Gpr Name="x09" AbiName="s1" Description="Saved register" Number="9" Qemu="CPURISCVState.gpr[9]" />
+  <Gpr Name="x10" AbiName="a0" Description="Function argument/return value" Number="10" Qemu="CPURISCVState.gpr[10]" />
+  <Gpr Name="x11" AbiName="a1" Description="Function argument/return value" Number="11" Qemu="CPURISCVState.gpr[11]" />
+  <Gpr Name="x12" AbiName="a2" Description="Function argument" Number="12" Qemu="CPURISCVState.gpr[12]" />
+  <Gpr Name="x13" AbiName="a3" Description="Function argument" Number="13" Qemu="CPURISCVState.gpr[13]" />
+  <Gpr Name="x14" AbiName="a4" Description="Function argument" Number="14" Qemu="CPURISCVState.gpr[14]" />
+  <Gpr Name="x15" AbiName="a5" Description="Function argument" Number="15" Qemu="CPURISCVState.gpr[15]" />
+  <Gpr Name="x16" AbiName="a6" Description="Function argument" Number="16" Qemu="CPURISCVState.gpr[16]" />
+  <Gpr Name="x17" AbiName="a7" Description="Function argument" Number="17" Qemu="CPURISCVState.gpr[17]" />
+  <Gpr Name="x18" AbiName="s2" Description="Saved register" Number="18" Qemu="CPURISCVState.gpr[18]" />
+  <Gpr Name="x19" AbiName="s3" Description="Saved register" Number="19" Qemu="CPURISCVState.gpr[19]" />
+  <Gpr Name="x20" AbiName="s4" Description="Saved register" Number="20" Qemu="CPURISCVState.gpr[20]" />
+  <Gpr Name="x21" AbiName="s5" Description="Saved register" Number="21" Qemu="CPURISCVState.gpr[21]" />
+  <Gpr Name="x22" AbiName="s6" Description="Saved register" Number="22" Qemu="CPURISCVState.gpr[22]" />
+  <Gpr Name="x23" AbiName="s7" Description="Saved register" Number="23" Qemu="CPURISCVState.gpr[23]" />
+  <Gpr Name="x24" AbiName="s8" Description="Saved register" Number="24" Qemu="CPURISCVState.gpr[24]" />
+  <Gpr Name="x25" AbiName="s9" Description="Saved register" Number="25" Qemu="CPURISCVState.gpr[25]" />
+  <Gpr Name="x26" AbiName="s10" Description="Saved register" Number="26" Qemu="CPURISCVState.gpr[26]" />
+  <Gpr Name="x27" AbiName="s11" Description="Saved register" Number="27" Qemu="CPURISCVState.gpr[27]" />
+  <Gpr Name="x28" AbiName="t3" Description="Temporary" Number="28" Qemu="CPURISCVState.gpr[28]" />
+  <Gpr Name="x29" AbiName="t4" Description="Temporary" Number="29" Qemu="CPURISCVState.gpr[29]" />
+  <Gpr Name="x30" AbiName="t5" Description="Temporary" Number="30" Qemu="CPURISCVState.gpr[30]" />
+  <Gpr Name="x31" AbiName="t6" Description="Temporary" Number="31" Qemu="CPURISCVState.gpr[31]" />
+  
+  <Operand Name="rd" Mask="0x00000F80" Type="gpr" />
+  <Operand Name="rs1" Mask="0x000F8000" Type="gpr" />
+  <Operand Name="rs2" Mask="0x01F00000" Type="gpr" />
+  <Operand Name="rs3" Mask="0xF8000000" Type="gpr" />
+  <Operand Name="imm_i" ShortName="imm" Mask="0xFFF00000" Type="imm" />
+  <Operand Name="imm_s" ShortName="imm" Mask="0xFE000F80" Type="imm" />
+  <Operand Name="imm_b" ShortName="imm" Mask="0xFE000F80" Type="imm" />
+  <Operand Name="imm_u" ShortName="imm" Mask="0xFFFFF000" Type="imm" />
+  <Operand Name="imm_j" ShortName="imm" Mask="0xFFFFF000" Type="imm" />
+  <Operand Name="shamt" Mask="0x01F00000" Type="shamt" />
+  <Operand Name="fm" Mask="0xF0000000" />
+  <Operand Name="pred" Mask="0x0F000000" />
+  <Operand Name="succ" Mask="0x00F00000" />
+  <Operand Name="uimm" Mask="0x000F8000" Type="uimm" />
+  <Operand Name="csr" Mask="0xFFF00000" Type="csr" />
+  <Operand Name="aq" Mask="0x04000000" />
+  <Operand Name="rl" Mask="0x02000000" />
+  <Operand Name="rm" Mask="0x00007000" />
+
+  <Instruction Opcode="0x00000037" Mask="0x0000007f" Name="LUI" Kind="integer-computational" Operands="imm_u,rd" Format="U" />
+  <Instruction Opcode="0x00000017" Mask="0x0000007f" Name="AUIPC" Kind="integer-computational" Operands="imm_u,rd" Format="U" />
+  <Instruction Opcode="0x0000006f" Mask="0x0000007f" Name="JAL" Kind="control-transfer" Operands="imm_j,rd" Format="J" />
+  <Instruction Opcode="0x00000067" Mask="0x0000707f" Name="JALR" Kind="control-transfer" Operands="imm_i,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00000063" Mask="0x0000707f" Name="BEQ" Kind="control-transfer conditional" Operands="imm_b,rs2,rs1" Format="B" />
+  <Instruction Opcode="0x00001063" Mask="0x0000707f" Name="BNE" Kind="control-transfer conditional" Operands="imm_b,rs2,rs1" Format="B" />
+  <Instruction Opcode="0x00004063" Mask="0x0000707f" Name="BLT" Kind="control-transfer conditional" Operands="imm_b,rs2,rs1" Format="B" />
+  <Instruction Opcode="0x00005063" Mask="0x0000707f" Name="BGE" Kind="control-transfer conditional" Operands="imm_b,rs2,rs1" Format="B" />
+  <Instruction Opcode="0x00006063" Mask="0x0000707f" Name="BLTU" Kind="control-transfer conditional" Operands="imm_b,rs2,rs1" Format="B" />
+  <Instruction Opcode="0x00007063" Mask="0x0000707f" Name="BGEU" Kind="control-transfer conditional" Operands="imm_b,rs2,rs1" Format="B" />
+  <Instruction Opcode="0x00000003" Mask="0x0000707f" Name="LB" Kind="load" Operands="imm_i,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00001003" Mask="0x0000707f" Name="LH" Kind="load" Operands="imm_i,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00002003" Mask="0x0000707f" Name="LW" Kind="load" Operands="imm_i,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00004003" Mask="0x0000707f" Name="LBU" Kind="load" Operands="imm_i,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00005003" Mask="0x0000707f" Name="LHU" Kind="load" Operands="imm_i,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00000023" Mask="0x0000707f" Name="SB" Kind="store" Operands="imm_s,rs2,rs1" Format="S" />
+  <Instruction Opcode="0x00001023" Mask="0x0000707f" Name="SH" Kind="store" Operands="imm_s,rs2,rs1" Format="S" />
+  <Instruction Opcode="0x00002023" Mask="0x0000707f" Name="SW" Kind="store" Operands="imm_s,rs2,rs1" Format="S" />
+  <Instruction Opcode="0x00000013" Mask="0x0000707f" Name="ADDI" Kind="integer-computational" Operands="imm_i,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00002013" Mask="0x0000707f" Name="SLTI" Kind="integer-computational" Operands="imm_i,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00003013" Mask="0x0000707f" Name="SLTIU" Kind="integer-computational" Operands="imm_i,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00004013" Mask="0x0000707f" Name="XORI" Kind="integer-computational" Operands="imm_i,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00006013" Mask="0x0000707f" Name="ORI" Kind="integer-computational" Operands="imm_i,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00007013" Mask="0x0000707f" Name="ANDI" Kind="integer-computational" Operands="imm_i,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00001013" Mask="0xfe00707f" Name="SLLI" Kind="integer-computational" Operands="shamt,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00005013" Mask="0xfe00707f" Name="SRLI" Kind="integer-computational" Operands="shamt,rs1,rd" Format="I" />
+  <Instruction Opcode="0x40005013" Mask="0xfe00707f" Name="SRAI" Kind="integer-computational" Operands="shamt,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00000033" Mask="0xfe00707f" Name="ADD" Kind="integer-computational" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x40000033" Mask="0xfe00707f" Name="SUB" Kind="integer-computational" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x00001033" Mask="0xfe00707f" Name="SLL" Kind="integer-computational" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x00002033" Mask="0xfe00707f" Name="SLT" Kind="integer-computational" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x00003033" Mask="0xfe00707f" Name="SLTU" Kind="integer-computational" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x00004033" Mask="0xfe00707f" Name="XOR" Kind="integer-computational" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x00005033" Mask="0xfe00707f" Name="SRL" Kind="integer-computational" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x40005033" Mask="0xfe00707f" Name="SRA" Kind="integer-computational" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x00006033" Mask="0xfe00707f" Name="OR" Kind="integer-computational" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x00007033" Mask="0xfe00707f" Name="AND" Kind="integer-computational" Operands="rs2,rs1,rd" Format="R" />
+  <!-- <Instruction Opcode="0x0000000f" Mask="0x0000707f" Name="FENCE" Kind="memory-model" Operands="pred,succ" Format="I" /> -->
+  <Instruction Opcode="0x0000000f" Mask="0xf00fffff" Name="FENCE" Kind="memory-model" Operands="pred,succ" Format="I" />
+</IsaSubset>

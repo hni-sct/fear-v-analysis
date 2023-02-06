@@ -1,0 +1,16 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="N">
+  <!-- User Trap Setup -->
+  <Csr Number="0x000" Access="RW" Name="ustatus" Description="User status register" />
+  <Csr Number="0x004" Access="RW" Name="uie" Description="User interrupt-enable register" />
+  <Csr Number="0x005" Access="RW" Name="utvec" Description="User trap-handler base address" />
+
+  <!-- User Trap Handling -->
+  <Csr Number="0x040" Access="RW" Name="uscratch" Description="Scratch register for User trap handlers" />
+  <Csr Number="0x041" Access="RW" Name="uepc" Description="User exception program counter" />
+  <Csr Number="0x042" Access="RW" Name="ucause" Description="User trap cause" />
+  <Csr Number="0x043" Access="RW" Name="utval" Description="User bad address or instruction" />
+  <Csr Number="0x044" Access="RW" Name="uip" Description="User interrupt pending" />
+
+  <Instruction Opcode="0x00200073" Mask="0xffffffff" Name="URET" Kind="trap-return user" Operands="" Format="R" />
+</IsaSubset>

@@ -1,0 +1,160 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="Xcorev">
+  <!-- Hardware Loops -->
+  <Operand Name="uimmL" ShortName="uimmL" Mask="0xFFF00000" Type="imm" />
+  <Operand Name="L" ShortName="L" Mask="0x00000080" Type="imm" />
+  <Operand Name="rs1L" ShortName="rs1" Mask="0x000F8000" Type="gpr" />
+  <Operand Name="uimmS" ShortName="uimmS" Mask="0x000F8000" Type="imm" />
+  <Instruction Opcode="0x00000007b" Mask="0x000fff7f" Name="CV.STARTI" Kind="hwloops" Operands="uimmL,L" Format="HWL" />
+  <Instruction Opcode="0x00000107b" Mask="0x000fff7f" Name="CV.ENDI" Kind="hwloops" Operands="uimmL,L" Format="HWL" />
+  <Instruction Opcode="0x00000207b" Mask="0xfff07f7f" Name="CV.COUNT" Kind="hwloops" Operands="rs1L,L" Format="HWL" />
+  <Instruction Opcode="0x00000307b" Mask="0x000fff7f" Name="CV.COUNTI" Kind="hwloops" Operands="uimmL,L" Format="HWL" />
+  <Instruction Opcode="0x00000407b" Mask="0x00007f7f" Name="CV.SETUP" Kind="hwloops" Operands="uimmL,rs1L,L" Format="HWL" />
+  <Instruction Opcode="0x00000507b" Mask="0x00007f7f" Name="CV.SETUPI" Kind="hwloops" Operands="uimmL,uimmS,L" Format="HWL" />
+
+  <!-- Loads / Stores -->
+  <Operand Name="immLd" ShortName="Imm" Mask="0xFFF00000" Type="imm" />
+  <Operand Name="rdLd" ShortName="rD" Mask="0x00000F80" Type="gpr" />
+  <Operand Name="rs1LdSt!" ShortName="rs1!" Mask="0x000F8000" Type="gpr" />
+  <Operand Name="rs1LdSt" ShortName="rs1" Mask="0x000F8000" Type="gpr" />
+  <Operand Name="rs2LdSt" ShortName="rs2" Mask="0x01F00000" Type="gpr" />
+  <Operand Name="immSt" ShortName="Imm" Mask="0xFE000F80" Type="imm" />
+  <Operand Name="rs3St" ShortName="rs3" Mask="0x00000F80" Type="gpr" />
+
+  <!-- Register-Immediate Loads with Post-Increment -->
+  <Instruction Opcode="0x0000000b" Mask="0x0000707f" Name="CV.LB rD,Imm(rs1!)" Kind="" Operands="immLd,rs1LdSt!,rdLd" Format="RI-LD!" />
+  <Instruction Opcode="0x0000400b" Mask="0x0000707f" Name="CV.LBU rD,Imm(rs1!)" Kind="" Operands="immLd,rs1LdSt!,rdLd" Format="RI-LD!" />
+  <Instruction Opcode="0x0000100b" Mask="0x0000707f" Name="CV.LH rD,Imm(rs1!)" Kind="" Operands="immLd,rs1LdSt!,rdLd" Format="RI-LD!" />
+  <Instruction Opcode="0x0000500b" Mask="0x0000707f" Name="CV.LHU rD,Imm(rs1!)" Kind="" Operands="immLd,rs1LdSt!,rdLd" Format="RI-LD!" />
+  <Instruction Opcode="0x0000200b" Mask="0x0000707f" Name="CV.LW rD,Imm(rs1!)" Kind="" Operands="immLd,rs1LdSt!,rdLd" Format="RI-LD!" />
+
+  <!-- Register-Register Loads with Post-Increment -->
+  <Instruction Opcode="0x0000700b" Mask="0xfe00707f" Name="CV.LB rD,rs2(rs1!)" Kind="" Operands="rs2LdSt,rs1LdSt!,rdLd" Format="RR-LD!" />
+  <Instruction Opcode="0x4000700b" Mask="0xfe00707f" Name="CV.LBU rD,rs2(rs1!)" Kind="" Operands="rs2LdSt,rs1LdSt!,rdLd" Format="RR-LD!" />
+  <Instruction Opcode="0x1000700b" Mask="0xfe00707f" Name="CV.LH rD,rs2(rs1!)" Kind="" Operands="rs2LdSt,rs1LdSt!,rdLd" Format="RR-LD!" />
+  <Instruction Opcode="0x5000700b" Mask="0xfe00707f" Name="CV.LHU rD,rs2(rs1!)" Kind="" Operands="rs2LdSt,rs1LdSt!,rdLd" Format="RR-LD!" />
+  <Instruction Opcode="0x2000700b" Mask="0xfe00707f" Name="CV.LW rD,rs2(rs1!)" Kind="" Operands="rs2LdSt,rs1LdSt!,rdLd" Format="RR-LD!" /> 
+
+  <!-- Register-Register Loads -->
+  <Instruction Opcode="0x00007003" Mask="0xfe00707f" Name="CV.LB rD,rs2(rs1)" Kind="" Operands="rs2LdSt,rs1LdSt,rdLd" Format="RR-LD" />
+  <Instruction Opcode="0x40007003" Mask="0xfe00707f" Name="CV.LBU rD,rs2(rs1)" Kind="" Operands="rs2LdSt,rs1LdSt,rdLd" Format="RR-LD" />
+  <Instruction Opcode="0x10007003" Mask="0xfe00707f" Name="CV.LH rD,rs2(rs1)" Kind="" Operands="rs2LdSt,rs1LdSt,rdLd" Format="RR-LD" />
+  <Instruction Opcode="0x50007003" Mask="0xfe00707f" Name="CV.LHU rD,rs2(rs1)" Kind="" Operands="rs2LdSt,rs1LdSt,rdLd" Format="RR-LD" />
+  <Instruction Opcode="0x20007003" Mask="0xfe00707f" Name="CV.LW rD,rs2(rs1)" Kind="" Operands="rs2LdSt,rs1LdSt,rdLd" Format="RR-LD" /> 
+
+  <!-- Register-Immediate Stores with Post-Increment -->
+  <Instruction Opcode="0x0000002b" Mask="0x0000707f" Name="CV.SB rs2,Imm(rs1!)" Kind="" Operands="immSt,rs2LdSt,rs1LdSt!" Format="RI-ST!" />
+  <Instruction Opcode="0x0000102b" Mask="0x0000707f" Name="CV.SH rs2,Imm(rs1!)" Kind="" Operands="immSt,rs2LdSt,rs1LdSt!" Format="RI-ST!" />
+  <Instruction Opcode="0x0000202b" Mask="0x0000707f" Name="CV.SW rs2,Imm(rs1!)" Kind="" Operands="immSt,rs2LdSt,rs1LdSt!" Format="RI-ST!" />
+
+  <!-- Register-Register Stores with Post-Increment -->
+  <Instruction Opcode="0x0000402b" Mask="0xfe00707f" Name="CV.SB rs2,rs3(rs1!)" Kind="" Operands="rs2LdSt,rs1LdSt!,rs3St" Format="RR-ST!" />
+  <Instruction Opcode="0x0000502b" Mask="0xfe00707f" Name="CV.SH rs2,rs3(rs1!)" Kind="" Operands="rs2LdSt,rs1LdSt!,rs3St" Format="RR-ST!" />
+  <Instruction Opcode="0x0000602b" Mask="0xfe00707f" Name="CV.SW rs2,rs3(rs1!)" Kind="" Operands="rs2LdSt,rs1LdSt!,rs3St" Format="RR-ST!" /> 
+
+  <!-- Register-Register Stores -->
+  <Instruction Opcode="0x00004023" Mask="0xfe00707f" Name="CV.SB rs2,rs3(rs1)" Kind="" Operands="rs2LdSt,rs1LdSt,rs3St" Format="RR-ST" />
+  <Instruction Opcode="0x00005023" Mask="0xfe00707f" Name="CV.SH rs2,rs3(rs1)" Kind="" Operands="rs2LdSt,rs1LdSt,rs3St" Format="RR-ST" />
+  <Instruction Opcode="0x00006023" Mask="0xfe00707f" Name="CV.SW rs2,rs3(rs1)" Kind="" Operands="rs2LdSt,rs1LdSt,rs3St" Format="RR-ST" />
+
+  <!-- Bit Manipulation -->
+  <Operand Name="ls3_5" ShortName="ls3" Mask="0x3E000000" Type="imm" />
+  <Operand Name="ls2" ShortName="ls2" Mask="0x01F00000" Type="imm" />
+  <Operand Name="rs2Bm" ShortName="rs2" Mask="0x01F00000" Type="gpr" />
+  <Operand Name="rs1Bm" ShortName="rs1" Mask="0x000F8000" Type="gpr" />
+  <Operand Name="rdBm" ShortName="rD" Mask="0x00000F80" Type="gpr" />
+  <Operand Name="ls3_2" ShortName="ls3" Mask="0x06000000" Type="imm" />
+
+  <Instruction Opcode="0xC000007F" Mask="0xC000707F" Name="CV.EXTRACT" Kind="" Operands="ls3_5,ls2,rs1Bm,rdBm" Format="BM-4a" />
+  <Instruction Opcode="0xC000107F" Mask="0xC000707F" Name="CV.EXTRACTU" Kind="" Operands="ls3_5,ls2,rs1Bm,rdBm" Format="BM-4a" />
+  <Instruction Opcode="0xC000207F" Mask="0xC000707F" Name="CV.INSERT" Kind="" Operands="ls3_5,ls2,rs1Bm,rdBm" Format="BM-4a" />
+  <Instruction Opcode="0xC000307F" Mask="0xC000707F" Name="CV.BCLR" Kind="" Operands="ls3_5,ls2,rs1Bm,rdBm" Format="BM-4a" />
+  <Instruction Opcode="0xC000407F" Mask="0xC000707F" Name="CV.BSET" Kind="" Operands="ls3_5,ls2,rs1Bm,rdBm" Format="BM-4a" />
+  <Instruction Opcode="0x8000007F" Mask="0xFE00707F" Name="CV.EXTRACTR" Kind="" Operands="rs2Bm,rs1Bm,rdBm" Format="BM-3" />
+  <Instruction Opcode="0x8000107F" Mask="0xFE00707F" Name="CV.EXTRACTUR" Kind="" Operands="rs2Bm,rs1Bm,rdBm" Format="BM-3" />
+  <Instruction Opcode="0x8000207F" Mask="0xFE00707F" Name="CV.INSERTR" Kind="" Operands="rs2Bm,rs1Bm,rdBm" Format="BM-3" />
+  <Instruction Opcode="0x8000307F" Mask="0xFE00707F" Name="CV.BCLRR" Kind="" Operands="rs2Bm,rs1Bm,rdBm" Format="BM-3" />
+  <Instruction Opcode="0x8000407F" Mask="0xFE00707F" Name="CV.BSETR" Kind="" Operands="rs2Bm,rs1Bm,rdBm" Format="BM-3" />
+  <Instruction Opcode="0xC000507F" Mask="0xC000707F" Name="CV.BITREV" Kind="" Operands="ls3_2,ls2,rs1Bm,rdBm" Format="BM-4b" />
+
+  <Instruction Opcode="0x0800507F" Mask="0xFE00707F" Name="CV.ROR" Kind="" Operands="rs2Bm,rs1Bm,rdBm" Format="BM-3" />
+  <Instruction Opcode="0x1000007F" Mask="0xFFF0707F" Name="CV.FF1" Kind="" Operands="rs1Bm,rdBm" Format="BM-2" />
+  <Instruction Opcode="0x1000107F" Mask="0xFFF0707F" Name="CV.FL1" Kind="" Operands="rs1Bm,rdBm" Format="BM-2" />
+  <Instruction Opcode="0x1000207F" Mask="0xFFF0707F" Name="CV.CLB" Kind="" Operands="rs1Bm,rdBm" Format="BM-2" />
+  <Instruction Opcode="0x1000307F" Mask="0xFFF0707F" Name="CV.CNT" Kind="" Operands="rs1Bm,rdBm" Format="BM-2" />
+
+  <!-- General ALU Operations -->
+  <Operand Name="rdAlu" ShortName="rD" Mask="0x00000F80" Type="gpr" />
+  <Operand Name="rs1Alu" ShortName="rs1" Mask="0x000F8000" Type="gpr" />
+  <Operand Name="rs2Alu" ShortName="rs2" Mask="0x01F00000" Type="gpr" />
+  <Operand Name="ls2Alu" ShortName="ls2" Mask="0x01F00000" Type="imm" />
+  <Operand Name="ls3Alu" ShortName="ls3" Mask="0x3E000000" Type="imm" />
+
+  <Instruction Opcode="0x04000033" Mask="0xFFF0707F" Name="CV.ABS" Kind="" Operands="rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x10004033" Mask="0xFFF0707F" Name="CV.EXTHS" Kind="" Operands="rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x10005033" Mask="0xFFF0707F" Name="CV.EXTHZ" Kind="" Operands="rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x10006033" Mask="0xFFF0707F" Name="CV.EXTBS" Kind="" Operands="rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x10007033" Mask="0xFFF0707F" Name="CV.EXTBZ" Kind="" Operands="rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x04002033" Mask="0xFE00707F" Name="CV.SLET" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x04003033" Mask="0xFE00707F" Name="CV.SLETU" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x04004033" Mask="0xFE00707F" Name="CV.MIN" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x04005033" Mask="0xFE00707F" Name="CV.MINU" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x04006033" Mask="0xFE00707F" Name="CV.MAX" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x04007033" Mask="0xFE00707F" Name="CV.MAXU" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x14001033" Mask="0xFE00707F" Name="CV.CLIP" Kind="" Operands="ls2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x14002033" Mask="0xFE00707F" Name="CV.CLIPU" Kind="" Operands="ls2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x14005033" Mask="0xFE00707F" Name="CV.CLIPR" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x14006033" Mask="0xFE00707F" Name="CV.CLIPUR" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x0000205B" Mask="0xC000707F" Name="CV.ADDN" Kind="" Operands="ls3Alu,rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x8000205B" Mask="0xC000707F" Name="CV.ADDUN" Kind="" Operands="ls3Alu,rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0xC000205B" Mask="0xFE00707F" Name="CV.ADDUNR" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x0000605B" Mask="0xC000707F" Name="CV.ADDRN" Kind="" Operands="ls3Alu,rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x8000605B" Mask="0xC000707F" Name="CV.ADDURN" Kind="" Operands="ls3Alu,rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x4000205B" Mask="0xFE00707F" Name="CV.ADDNR" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x4000605B" Mask="0xFE00707F" Name="CV.ADDRNR" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0xC000605B" Mask="0xFE00707F" Name="CV.ADDURNR" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x0000305B" Mask="0xC000707F" Name="CV.SUBN" Kind="" Operands="ls3Alu,rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x8000305B" Mask="0xC000707F" Name="CV.SUBUN" Kind="" Operands="ls3Alu,rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x0000705B" Mask="0xC000707F" Name="CV.SUBRN" Kind="" Operands="ls3Alu,rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x8000705B" Mask="0xC000707F" Name="CV.SUBURN" Kind="" Operands="ls3Alu,rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x4000305B" Mask="0xFE00707F" Name="CV.SUBNR" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0xC000305B" Mask="0xFE00707F" Name="CV.SUBUNR" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0x4000705B" Mask="0xFE00707F" Name="CV.SUBRNR" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+  <Instruction Opcode="0xC000705B" Mask="0xFE00707F" Name="CV.SUBURNR" Kind="" Operands="rs2Alu,rs1Alu,rdAlu" Format="" />
+
+  <!-- Immediate Branching -->
+  <Operand Name="rs1Bi" ShortName="rs1" Mask="0x000F8000" Type="gpr" />
+  <Operand Name="imm5Bi" ShortName="Imm5" Mask="0x01F00000" Type="imm" />
+  <Operand Name="imm12Bi" ShortName="Imm12" Mask="0xFE000F80" Type="imm" />
+
+  <Instruction Opcode="0x00002063" Mask="0x0000707f" Name="CV.BEQIMM" Kind="" Operands="rs1Bi,imm5Bi,imm12Bi" Format="" />
+  <Instruction Opcode="0x00003063" Mask="0x0000707f" Name="CV.BNEIMM" Kind="" Operands="rs1Bi,imm5Bi,imm12Bi" Format="" />
+
+  <!-- Multiply-Accumulate -->
+  <Operand Name="rdMac" ShortName="rD" Mask="0x00000F80" Type="gpr" />
+  <Operand Name="rs1Mac" ShortName="rs1" Mask="0x000F8000" Type="gpr" />
+  <Operand Name="rs2Mac" ShortName="rs2" Mask="0x01F00000" Type="gpr" />
+  <Operand Name="ls3Mac" ShortName="ls3" Mask="0x3E000000" Type="imm" />
+
+  <Instruction Opcode="0x42000033" Mask="0xFE00707F" Name="CV.MAC" Kind="" Operands="rs2Mac,rs1Mac,rdMac" Format="MAC" />
+  <Instruction Opcode="0x42001033" Mask="0xFE00707F" Name="CV.MSU" Kind="" Operands="rs2Mac,rs1Mac,rdMac" Format="MAC" />
+  <Instruction Opcode="0x8000005B" Mask="0xC000707F" Name="CV.MULSN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0xC000005B" Mask="0xC000707F" Name="CV.MULHHSN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0x8000405B" Mask="0xC000707F" Name="CV.MULSRN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0xC000405B" Mask="0xC000707F" Name="CV.MULHHSRN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0x0000005B" Mask="0xC000707F" Name="CV.MULUN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0x4000005B" Mask="0xC000707F" Name="CV.MULHHUN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0x0000405B" Mask="0xC000707F" Name="CV.MULURN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0x4000405B" Mask="0xC000707F" Name="CV.MULHHURN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0x8000105B" Mask="0xC000707F" Name="CV.MACSN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0xC000105B" Mask="0xC000707F" Name="CV.MACHHSN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0x8000505B" Mask="0xC000707F" Name="CV.MACSRN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0xC000505B" Mask="0xC000707F" Name="CV.MACHHSRN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0x0000105B" Mask="0xC000707F" Name="CV.MACUN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0x4000105B" Mask="0xC000707F" Name="CV.MACHHUN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0x0000505B" Mask="0xC000707F" Name="CV.MACURN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+  <Instruction Opcode="0x4000505B" Mask="0xC000707F" Name="CV.MACHHURN" Kind="" Operands="ls3Mac,rs2Mac,rs1Mac,rdMac" Format="MAC2" />
+
+  <!-- TO DO: SIMD -->
+
+</IsaSubset>

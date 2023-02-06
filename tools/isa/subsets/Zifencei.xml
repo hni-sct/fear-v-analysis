@@ -1,0 +1,5 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="Zifencei">
+  <!-- <Instruction Opcode="0x0000100f" Mask="0x0000707f" Name="FENCE.I" Kind="memory-model" Operands="" Format="I" /> -->
+  <Instruction Opcode="0x0000100f" Mask="0xffffffff" Name="FENCE.I" Kind="memory-model" Operands="" Format="I" />
+</IsaSubset>

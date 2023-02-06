@@ -1,0 +1,7 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="Spike">
+
+  <!-- Spike Dummy Memory Map -->
+  <MemoryRegion From="0x00000000" To="0xFFFFFFFF" Name="Memory" Type="RAM" />
+
+</IsaSubset>

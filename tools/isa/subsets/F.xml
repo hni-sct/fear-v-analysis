@@ -1,0 +1,67 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="F">
+  <!-- Floating Point Registers -->
+  <Fpr Name="f00" AbiName="ft0" Description="FP Temporary" Number="0" Qemu="CPURISCVState.fpr[0]" />
+  <Fpr Name="f01" AbiName="ft1" Description="FP Temporary" Number="1" Qemu="CPURISCVState.fpr[1]" />
+  <Fpr Name="f02" AbiName="ft2" Description="FP Temporary" Number="2" Qemu="CPURISCVState.fpr[2]" />
+  <Fpr Name="f03" AbiName="ft3" Description="FP Temporary" Number="3" Qemu="CPURISCVState.fpr[3]" />
+  <Fpr Name="f04" AbiName="ft4" Description="FP Temporary" Number="4" Qemu="CPURISCVState.fpr[4]" />
+  <Fpr Name="f05" AbiName="ft5" Description="FP Temporary" Number="5" Qemu="CPURISCVState.fpr[5]" />
+  <Fpr Name="f06" AbiName="ft6" Description="FP Temporary" Number="6" Qemu="CPURISCVState.fpr[6]" />
+  <Fpr Name="f07" AbiName="ft7" Description="FP Temporary" Number="7" Qemu="CPURISCVState.fpr[7]" />
+  <Fpr Name="f08" AbiName="fs0" Description="FP Saved register" Number="8" Qemu="CPURISCVState.fpr[8]" />
+  <Fpr Name="f09" AbiName="fs1" Description="FP Saved register" Number="9" Qemu="CPURISCVState.fpr[9]" />
+  <Fpr Name="f10" AbiName="fa0" Description="FP Function argument/return value" Number="10" Qemu="CPURISCVState.fpr[10]" />
+  <Fpr Name="f11" AbiName="fa1" Description="FP Function argument/return value" Number="11" Qemu="CPURISCVState.fpr[11]" />
+  <Fpr Name="f12" AbiName="fa2" Description="FP Function argument" Number="12" Qemu="CPURISCVState.fpr[12]" />
+  <Fpr Name="f13" AbiName="fa3" Description="FP Function argument" Number="13" Qemu="CPURISCVState.fpr[13]" />
+  <Fpr Name="f14" AbiName="fa4" Description="FP Function argument" Number="14" Qemu="CPURISCVState.fpr[14]" />
+  <Fpr Name="f15" AbiName="fa5" Description="FP Function argument" Number="15" Qemu="CPURISCVState.fpr[15]" />
+  <Fpr Name="f16" AbiName="fa6" Description="FP Function argument" Number="16" Qemu="CPURISCVState.fpr[16]" />
+  <Fpr Name="f17" AbiName="fa7" Description="FP Function argument" Number="17" Qemu="CPURISCVState.fpr[17]" />
+  <Fpr Name="f18" AbiName="fs2" Description="FP Saved register" Number="18" Qemu="CPURISCVState.fpr[18]" />
+  <Fpr Name="f19" AbiName="fs3" Description="FP Saved register" Number="19" Qemu="CPURISCVState.fpr[19]" />
+  <Fpr Name="f20" AbiName="fs4" Description="FP Saved register" Number="20" Qemu="CPURISCVState.fpr[20]" />
+  <Fpr Name="f21" AbiName="fs5" Description="FP Saved register" Number="21" Qemu="CPURISCVState.fpr[21]" />
+  <Fpr Name="f22" AbiName="fs6" Description="FP Saved register" Number="22" Qemu="CPURISCVState.fpr[22]" />
+  <Fpr Name="f23" AbiName="fs7" Description="FP Saved register" Number="23" Qemu="CPURISCVState.fpr[23]" />
+  <Fpr Name="f24" AbiName="fs8" Description="FP Saved register" Number="24" Qemu="CPURISCVState.fpr[24]" />
+  <Fpr Name="f25" AbiName="fs9" Description="FP Saved register" Number="25" Qemu="CPURISCVState.fpr[25]" />
+  <Fpr Name="f26" AbiName="fs10" Description="FP Saved register" Number="26" Qemu="CPURISCVState.fpr[26]" />
+  <Fpr Name="f27" AbiName="fs11" Description="FP Saved register" Number="27" Qemu="CPURISCVState.fpr[27]" />
+  <Fpr Name="f28" AbiName="ft8" Description="FP Temporary" Number="28" Qemu="CPURISCVState.fpr[28]" />
+  <Fpr Name="f29" AbiName="ft9" Description="FP Temporary" Number="29" Qemu="CPURISCVState.fpr[29]" />
+  <Fpr Name="f30" AbiName="ft10" Description="FP Temporary" Number="30" Qemu="CPURISCVState.fpr[30]" />
+  <Fpr Name="f31" AbiName="ft11" Description="FP Temporary" Number="31" Qemu="CPURISCVState.fpr[31]" />
+  <!-- Floating Point CSRs -->
+  <Csr Number="0x001" Name="fflags" Description="Floating-Point Accrued Exceptions" Qemu="CPURISCVState.fp_status" />
+  <Csr Number="0x002" Name="frm" Description="Floating-Point Dynamic Rounding Mode" Qemu="CPURISCVState.frm" />
+  <Csr Number="0x003" Name="fcsr" Description="Floating-Point Control and Status Register (frm + fflags)" Qemu="CPURISCVState.fp_status|frm" />
+  
+  <Instruction Opcode="0x00002007" Mask="0x0000707f" Name="FLW" Kind="fsp-load" Operands="imm_i,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00002027" Mask="0x0000707f" Name="FSW" Kind="fsp-store" Operands="imm_s,rs2,rs1" Format="S" />
+  <Instruction Opcode="0x00000043" Mask="0x0600007f" Name="FMADD.S" Kind="fsp-computational" Operands="rm,rs3,rs2,rs1,rd" Format="R4" />
+  <Instruction Opcode="0x00000047" Mask="0x0600007f" Name="FMSUB.S" Kind="fsp-computational" Operands="rm,rs3,rs2,rs1,rd" Format="R4" />
+  <Instruction Opcode="0x0000004b" Mask="0x0600007f" Name="FNMSUB.S" Kind="fsp-computational" Operands="rm,rs3,rs2,rs1,rd" Format="R4" />
+  <Instruction Opcode="0x0000004f" Mask="0x0600007f" Name="FNMADD.S" Kind="fsp-computational" Operands="rm,rs3,rs2,rs1,rd" Format="R4" />
+  <Instruction Opcode="0x00000053" Mask="0xfe00007f" Name="FADD.S" Kind="fsp-computational" Operands="rm,rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x08000053" Mask="0xfe00007f" Name="FSUB.S" Kind="fsp-computational" Operands="rm,rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x10000053" Mask="0xfe00007f" Name="FMUL.S" Kind="fsp-computational" Operands="rm,rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x18000053" Mask="0xfe00007f" Name="FDIV.S" Kind="fsp-computational" Operands="rm,rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x58000053" Mask="0xfff0007f" Name="FSQRT.S" Kind="fsp-computational" Operands="rm,rs1,rd" Format="R" />
+  <Instruction Opcode="0x20000053" Mask="0xfe00707f" Name="FSGNJ.S" Kind="fsp-conversion-move" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x20001053" Mask="0xfe00707f" Name="FSGNJN.S" Kind="fsp-conversion-move" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x20002053" Mask="0xfe00707f" Name="FSGNJX.S" Kind="fsp-conversion-move" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x28000053" Mask="0xfe00707f" Name="FMIN.S" Kind="fsp-computational" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0x28001053" Mask="0xfe00707f" Name="FMAX.S" Kind="fsp-computational" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0xc0000053" Mask="0xfff0007f" Name="FCVT.W.S" Kind="fsp-conversion-move" Operands="rm,rs1,rd" Format="R" />
+  <Instruction Opcode="0xc0100053" Mask="0xfff0007f" Name="FCVT.WU.S" Kind="fsp-conversion-move" Operands="rm,rs1,rd" Format="R" />
+  <Instruction Opcode="0xe0000053" Mask="0xfff0707f" Name="FMV.X.W" Kind="fsp-conversion-move" Operands="rs1,rd" Format="R" />
+  <Instruction Opcode="0xa0002053" Mask="0xfe00707f" Name="FEQ.S" Kind="fsp-compare" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0xa0001053" Mask="0xfe00707f" Name="FLT.S" Kind="fsp-compare" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0xa0000053" Mask="0xfe00707f" Name="FLE.S" Kind="fsp-compare" Operands="rs2,rs1,rd" Format="R" />
+  <Instruction Opcode="0xe0001053" Mask="0xfff0707f" Name="FCLASS.S" Kind="fsp-classify" Operands="rs1,rd" Format="R" />
+  <Instruction Opcode="0xd0000053" Mask="0xfff0007f" Name="FCVT.S.W" Kind="fsp-conversion-move" Operands="rm,rs1,rd" Format="R" />
+  <Instruction Opcode="0xd0100053" Mask="0xfff0007f" Name="FCVT.S.WU" Kind="fsp-conversion-move" Operands="rm,rs1,rd" Format="R" />
+  <Instruction Opcode="0xf0000053" Mask="0xfff0707f" Name="FMV.W.X" Kind="fsp-conversion-move" Operands="rs1,rd" Format="R" />
+</IsaSubset>

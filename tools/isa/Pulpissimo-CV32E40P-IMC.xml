@@ -1,0 +1,273 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="Pulpissimo-RI5CY-IMC">
+
+  <!-- QEMU TERMINATOR DEVICE -->
+  <MemoryRegion From="0x10037004" To="0x10037007" Name="FEAR5:kill_device"/>
+
+  <!-- Pulpissimo Dummy Memory Map -->
+  <MemoryRegion From="0x1A000000" To="0x1A001FFF" Name="BootROM" Type="ROM" />
+
+  <Device Name="FLL">
+    <Csr Address="0x1A100000" Bits="32" Name="STATUS" Description="FLL status register" />
+    <Csr Address="0x1A100004" Bits="32" Name="CFG1" Description="FLL configuration 1 register" />
+    <Csr Address="0x1A100008" Bits="32" Name="CFG2" Description="FLL configuration 2 register" />
+    <Csr Address="0x1A10000C" Bits="32" Name="INTEG" Description="FLL integrator configuration register" />
+  </Device>
+  <Device Name="GPIO">
+    <Csr Address="0x1A101000" Bits="32" Name="PADDIR_00_31" Description="GPIO pad direction configuration register." />
+    <Csr Address="0x1A101004" Bits="32" Name="GPIOEN_00_31" Description="GPIO enable register." />
+    <Csr Address="0x1A101008" Bits="32" Name="PADIN_00_31" Description="GPIO pad input value register." />
+    <Csr Address="0x1A10100C" Bits="32" Name="PADOUT_00_31" Description="GPIO pad output value register." />
+    <Csr Address="0x1A101010" Bits="32" Name="PADOUTSET_00_31" Description="GPIO pad output set register." />
+    <Csr Address="0x1A101014" Bits="32" Name="PADOUTCLR_00_31" Description="GPIO pad output clear register." />
+    <Csr Address="0x1A101018" Bits="32" Name="INTEN_00_31" Description="GPIO pad interrupt enable configuration register." />
+    <Csr Address="0x1A10101C" Bits="32" Name="INTTYPE_00_15" Description="GPIO pad interrupt type gpio 0 to 15 register." />
+    <Csr Address="0x1A101020" Bits="32" Name="INTTYPE_16_31" Description="GPIO pad interrupt type gpio 16 to 31 register." />
+    <Csr Address="0x1A101024" Bits="32" Name="INTSTATUS_00_31" Description="GPIO pad interrupt status register." />
+    <Csr Address="0x1A101028" Bits="32" Name="PADCFG_00_07" Description="GPIO pad pin 0 to 7 configuration register." />
+    <Csr Address="0x1A10102C" Bits="32" Name="PADCFG_08_15" Description="GPIO pad pin 8 to 15 configuration register." />
+    <Csr Address="0x1A101030" Bits="32" Name="PADCFG_16_23" Description="GPIO pad pin 16 to 23 configuration register." />
+    <Csr Address="0x1A101034" Bits="32" Name="PADCFG_24_31" Description="GPIO pad pin 24 to 31 configuration register." />
+    <Csr Address="0x1A101038" Bits="32" Name="PADDIR_32_63" Description="GPIO pad direction configuration register." />
+    <Csr Address="0x1A10103C" Bits="32" Name="GPIOEN_32_63" Description="GPIO enable register." />
+    <Csr Address="0x1A101040" Bits="32" Name="PADIN_32_63" Description="GPIO pad input value register." />
+    <Csr Address="0x1A101044" Bits="32" Name="PADOUT_32_63" Description="GPIO pad output value register." />
+    <Csr Address="0x1A101048" Bits="32" Name="PADOUTSET_32_63" Description="GPIO pad output set register." />
+    <Csr Address="0x1A10104C" Bits="32" Name="PADOUTCLR_32_63" Description="GPIO pad output clear register." />
+    <Csr Address="0x1A101050" Bits="32" Name="INTEN_32_63" Description="GPIO pad interrupt enable configuration register." />
+    <Csr Address="0x1A101054" Bits="32" Name="INTTYPE_32_47" Description="GPIO pad interrupt type gpio 32 to 47 register." />
+    <Csr Address="0x1A101058" Bits="32" Name="INTTYPE_48_63" Description="GPIO pad interrupt type gpio 48 to 63 register." />
+    <Csr Address="0x1A10105C" Bits="32" Name="INTSTATUS_32_63" Description="GPIO pad interrupt status register." />
+    <Csr Address="0x1A101060" Bits="32" Name="PADCFG_32_39" Description="GPIO pad pin 32 to 39 configuration register." />
+    <Csr Address="0x1A101064" Bits="32" Name="PADCFG_40_47" Description="GPIO pad pin 40 to 47 configuration register." />
+    <Csr Address="0x1A101068" Bits="32" Name="PADCFG_48_55" Description="GPIO pad pin 48 to 55 configuration register." />
+    <Csr Address="0x1A10106C" Bits="32" Name="PADCFG_56_63" Description="GPIO pad pin 56 to 63 configuration register." />
+  </Device>
+  <Device Name="UDMA">
+    <!-- uDMA Control Registers -->
+    <Csr Address="0x1A102000" Bits="32" Name="CTRL_CFG_CG" Description=" uDMA peripherals clock gate configuration" />
+    <Csr Address="0x1A102004" Bits="32" Name="CTRL_CFG_EVENT" Description=" uDMA peripherals external event configuration" />
+    <Csr Address="0x1A102008" Bits="32" Name="CTRL_CFG_RST" Description=" uDMA peripherals reset trigger (unimplemented)" />
+    <!-- uDMA UART Registers -->
+    <Csr Address="0x1A102080" Bits="32" Name="RX_SADDR" Description=" uDMA RX UART buffer base address configuration register." />
+    <Csr Address="0x1A102084" Bits="32" Name="RX_SIZE" Description=" uDMA RX UART buffer size configuration register." />
+    <Csr Address="0x1A102088" Bits="32" Name="RX_CFG" Description=" uDMA RX UART stream configuration register." />
+    <Csr Address="0x1A102090" Bits="32" Name="TX_SADDR" Description=" uDMA TX UART buffer base address configuration register." />
+    <Csr Address="0x1A102094" Bits="32" Name="TX_SIZE" Description=" uDMA TX UART buffer size configuration register." />
+    <Csr Address="0x1A102098" Bits="32" Name="TX_CFG" Description=" uDMA TX UART stream configuration register." />
+    <Csr Address="0x1A1020A0" Bits="32" Name="STATUS" Description=" uDMA UART status register." />
+    <Csr Address="0x1A1020A4" Bits="32" Name="SETUP" Description=" UDMA UART configuration register." />
+    <Csr Address="0x1A1020A8" Bits="32" Name="ERROR" Description=" uDMA UART Error status" />
+    <Csr Address="0x1A1020AC" Bits="32" Name="IRQ_EN" Description=" uDMA UART Read or Error interrupt enable register." />
+    <Csr Address="0x1A1020B0" Bits="32" Name="VALID" Description=" uDMA UART Read polling data valid flag register." />
+    <Csr Address="0x1A1020B4" Bits="32" Name="DATA" Description=" uDMA UART Read polling data register." />
+    <!-- uDMA SPI Registers -->
+    <Csr Address="0x1A102100" Bits="32" Name="SPIM_RX_SADDR" Description=" RX SPI uDMA transfer address of associated buffer" />
+    <Csr Address="0x1A102104" Bits="32" Name="SPIM_RX_SIZE" Description=" RX SPI uDMA transfer size of buffer" />
+    <Csr Address="0x1A102108" Bits="32" Name="SPIM_RX_CFG" Description=" RX SPI uDMA transfer configuration" />
+    <Csr Address="0x1A102110" Bits="32" Name="SPIM_TX_SADDR" Description=" TX SPI uDMA transfer address of associated buffer" />
+    <Csr Address="0x1A102114" Bits="32" Name="SPIM_TX_SIZE" Description=" TX SPI uDMA transfer size of buffer" />
+    <Csr Address="0x1A102118" Bits="32" Name="SPIM_TX_CFG" Description=" TX SPI uDMA transfer configuration" />
+    <Csr Address="0x1A102120" Bits="32" Name="SPIM_CMD_SADDR" Description=" CMD SPI uDMA transfer address of associated buffer" />
+    <Csr Address="0x1A102124" Bits="32" Name="SPIM_CMD_SIZE" Description=" CMD SPI uDMA transfer size of buffer" />
+    <Csr Address="0x1A102128" Bits="32" Name="SPIM_CMD_CFG" Description=" CMD SPI uDMA transfer configuration" />
+    <!-- uDMA I2C0 Registers -->
+    <Csr Address="0x1A102180" Bits="32" Name="RX_SADDR" Description=" uDMA RX I2C buffer base address configuration register." />
+    <Csr Address="0x1A102184" Bits="32" Name="RX_SIZE" Description=" uDMA RX I2C buffer size configuration register." />
+    <Csr Address="0x1A102188" Bits="32" Name="RX_CFG" Description=" uDMA RX I2C stream configuration register." />
+    <Csr Address="0x1A102190" Bits="32" Name="TX_SADDR" Description=" uDMA TX I2C buffer base address configuration register." />
+    <Csr Address="0x1A102194" Bits="32" Name="TX_SIZE" Description=" uDMA TX I2C buffer size configuration register." />
+    <Csr Address="0x1A102198" Bits="32" Name="TX_CFG" Description=" uDMA TX I2C stream configuration register." />
+    <Csr Address="0x1A1021A0" Bits="32" Name="CMD_SADDR" Description=" uDMA CMD I2C buffer base address configuration register." />
+    <Csr Address="0x1A1021A4" Bits="32" Name="CMD_SIZE" Description=" uDMA CMD I2C buffer size configuration register." />
+    <Csr Address="0x1A1021A8" Bits="32" Name="CMD_CFG" Description=" uDMA CMD I2C stream configuration register." />
+    <Csr Address="0x1A1021B0" Bits="32" Name="STATUS" Description=" uDMA I2C Status register." />
+    <Csr Address="0x1A1021B4" Bits="32" Name="SETUP" Description=" uDMA I2C Configuration register." />
+    <!-- uDMA I2C1 Registers -->
+    <Csr Address="0x1A102200" Bits="32" Name="RX_SADDR" Description=" uDMA RX I2C buffer base address configuration register." />
+    <Csr Address="0x1A102204" Bits="32" Name="RX_SIZE" Description=" uDMA RX I2C buffer size configuration register." />
+    <Csr Address="0x1A102208" Bits="32" Name="RX_CFG" Description=" uDMA RX I2C stream configuration register." />
+    <Csr Address="0x1A102210" Bits="32" Name="TX_SADDR" Description=" uDMA TX I2C buffer base address configuration register." />
+    <Csr Address="0x1A102214" Bits="32" Name="TX_SIZE" Description=" uDMA TX I2C buffer size configuration register." />
+    <Csr Address="0x1A102218" Bits="32" Name="TX_CFG" Description=" uDMA TX I2C stream configuration register." />
+    <Csr Address="0x1A102220" Bits="32" Name="CMD_SADDR" Description=" uDMA CMD I2C buffer base address configuration register." />
+    <Csr Address="0x1A102224" Bits="32" Name="CMD_SIZE" Description=" uDMA CMD I2C buffer size configuration register." />
+    <Csr Address="0x1A102228" Bits="32" Name="CMD_CFG" Description=" uDMA CMD I2C stream configuration register." />
+    <Csr Address="0x1A102230" Bits="32" Name="STATUS" Description=" uDMA I2C Status register." />
+    <Csr Address="0x1A102234" Bits="32" Name="SETUP" Description=" uDMA I2C Configuration register." />
+    <!-- uDMA I2S Registers -->
+    <Csr Address="0x1A102300" Bits="32" Name="I2S_RX_SADDR" Description=" RX Channel 0 I2S uDMA transfer address of associated buffer" />
+    <Csr Address="0x1A102304" Bits="32" Name="I2S_RX_SIZE" Description=" RX Channel 0 I2S uDMA transfer size of buffer" />
+    <Csr Address="0x1A102308" Bits="32" Name="I2S_RX_CFG" Description=" RX Channel 0 I2S uDMA transfer configuration" />
+    <Csr Address="0x1A102310" Bits="32" Name="I2S_TX_SADDR" Description=" TX Channel I2S uDMA transfer address of associated buffer" />
+    <Csr Address="0x1A102314" Bits="32" Name="I2S_TX_SIZE" Description=" TX Channel I2S uDMA transfer size of buffer" />
+    <Csr Address="0x1A102318" Bits="32" Name="I2S_TX_CFG" Description=" TX Channel I2S uDMA transfer configuration" />
+    <Csr Address="0x1A102320" Bits="32" Name="I2S_CLKCFG_SETUP" Description=" Clock configuration for both master, slave and pdm" />
+    <Csr Address="0x1A102324" Bits="32" Name="I2S_SLV_SETUP" Description=" Configuration of I2S slave" />
+    <Csr Address="0x1A102328" Bits="32" Name="I2S_MST_SETUP" Description=" Configuration of I2S master" />
+    <Csr Address="0x1A10232C" Bits="32" Name="I2S_PDM_SETUP" Description=" Configuration of PDM module" />
+    <!-- uDMA Camera Interface Registers -->
+    <Csr Address="0x1A102380" Bits="32" Name="CAM_RX_SADDR" Description=" RX Camera uDMA transfer address of associated buffer register" />
+    <Csr Address="0x1A102384" Bits="32" Name="CAM_RX_SIZE" Description=" RX Camera uDMA transfer size of buffer register" />
+    <Csr Address="0x1A102388" Bits="32" Name="CAM_RX_CFG" Description=" RX Camera uDMA transfer configuration register" />
+    <Csr Address="0x1A1023A0" Bits="32" Name="CAM_CFG_GLOB" Description=" Global configuration register" />
+    <Csr Address="0x1A1023A4" Bits="32" Name="CAM_CFG_LL" Description=" Lower Left corner configuration register" />
+    <Csr Address="0x1A1023A8" Bits="32" Name="CAM_CFG_UR" Description=" Upper Right corner configuration register" />
+    <Csr Address="0x1A1023AC" Bits="32" Name="CAM_CFG_SIZE" Description=" Horizontal Resolution configuration register" />
+    <Csr Address="0x1A1023B0" Bits="32" Name="CAM_CFG_FILTER" Description=" RGB coefficients configuration register" />
+    <Csr Address="0x1A1023B4" Bits="32" Name="CAM_VSYNC_POLARITY" Description=" VSYNC Polarity register" />
+    <!-- uDMA Filter Registers -->
+    <Csr Address="0x1A102400" Bits="32" Name="REG_TX_CH0_ADD" Description=" FILTER tx channel 0 address register" />
+    <Csr Address="0x1A102404" Bits="32" Name="REG_TX_CH0_CFG" Description=" FILTER tx channel 0 configuration register" />
+    <Csr Address="0x1A102408" Bits="32" Name="REG_TX_CH0_LEN0" Description=" FILTER tx channel 0 length0 register" />
+    <Csr Address="0x1A10240C" Bits="32" Name="REG_TX_CH0_LEN1" Description=" FILTER tx channel 0 length1 register" />
+    <Csr Address="0x1A102410" Bits="32" Name="REG_TX_CH0_LEN2" Description=" FILTER tx channel 0 length2 register" />
+    <Csr Address="0x1A102414" Bits="32" Name="REG_TX_CH1_ADD" Description=" FILTER tx channel 1 address register" />
+    <Csr Address="0x1A102418" Bits="32" Name="REG_TX_CH1_CFG" Description=" FILTER tx channel 1 configuration register" />
+    <Csr Address="0x1A10241C" Bits="32" Name="REG_TX_CH1_LEN0" Description=" FILTER tx channel 1 length0 register" />
+    <Csr Address="0x1A102420" Bits="32" Name="REG_TX_CH1_LEN1" Description=" FILTER tx channel 1 length1 register" />
+    <Csr Address="0x1A102424" Bits="32" Name="REG_TX_CH1_LEN2" Description=" FILTER tx channel 1 length2 register" />
+    <Csr Address="0x1A102428" Bits="32" Name="REG_RX_CH_ADD" Description=" FILTER RX channel address register" />
+    <Csr Address="0x1A10242C" Bits="32" Name="REG_RX_CH_CFG" Description=" FILTER RX channel configuration register" />
+    <Csr Address="0x1A102430" Bits="32" Name="REG_RX_CH_LEN0" Description=" FILTER RX channel length0 register" />
+    <Csr Address="0x1A102434" Bits="32" Name="REG_RX_CH_LEN1" Description=" FILTER RX channel length1 register" />
+    <Csr Address="0x1A102438" Bits="32" Name="REG_RX_CH_LEN2" Description=" FILTER RX channel length2 register" />
+    <Csr Address="0x1A10243C" Bits="32" Name="REG_AU_CFG" Description=" FILTER arithmetic unit configuration register" />
+    <Csr Address="0x1A102440" Bits="32" Name="REG_AU_REG0" Description=" FILTER arithmetic unit 0 register" />
+    <Csr Address="0x1A102444" Bits="32" Name="REG_AU_REG1" Description=" FILTER arithmetic unit 1 register" />
+    <Csr Address="0x1A102448" Bits="32" Name="REG_BINCU_TH" Description=" FILTER binarization threshold register" />
+    <Csr Address="0x1A10244C" Bits="32" Name="REG_BINCU_CNT" Description=" FILTER binarization count register" />
+    <Csr Address="0x1A102450" Bits="32" Name="REG_BINCU_SETUP" Description=" FILTER binarization datasize format register" />
+    <Csr Address="0x1A102454" Bits="32" Name="REG_BINCU_VAL" Description=" FILTER binarization result count register" />
+    <Csr Address="0x1A102458" Bits="32" Name="REG_FILT" Description=" FILTER control mode register" />
+    <Csr Address="0x1A10245C" Bits="32" Name="REG_FILT_CMD" Description=" FILTER start register" />
+    <Csr Address="0x1A102460" Bits="32" Name="REG_STATUS" Description=" FILTER status register" />
+  </Device>
+  <Device Name="SoC Control">
+    <Csr Address="0x1A104000" Bits="32" Name="Info" Description="This register holds the number of clusters and the number of cores in the each cluster. It is a read-only register." />
+    <Csr Address="0x1A104004" Bits="32" Name="Boot Address" Description="This register holds the boot address." />
+    <Csr Address="0x1A104008" Bits="32" Name="Fetch Enable" Description="This register contains the value of the fetch enable signal of the core." />
+    <Csr Address="0x1A104010" Bits="32" Name="PAD Mux0" Description="The first register (0x1A104010) can be used to sets the mux (2 bit select) from pin 0 (bits [1:0]) to 15 (bits [31:30])." />
+    <Csr Address="0x1A104014" Bits="32" Name="PAD Mux1" Description="The second register (0x1A104014) can be used to sets the mux (2 bit select) from pin 16 (bits [1:0]) to 31 (bits [31:30])." />
+    <Csr Address="0x1A104018" Bits="32" Name="PAD Mux2" Description="The third register (0x1A104018) can be used to sets the mux (2 bit select) from pin 32 (bits [1:0]) to 47 (bits [31:30])." />
+    <Csr Address="0x1A10401C" Bits="32" Name="PAD Mux3" Description="The forth register (0x1A10401C) can be used to sets the mux (2 bit select) from pin 48 (bits [1:0]) to 63 (bits [31:30])." />
+    <Csr Address="0x1A104020" Bits="32" Name="PAD CFG0" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A104024" Bits="32" Name="PAD CFG1" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A104028" Bits="32" Name="PAD CFG2" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A10402C" Bits="32" Name="PAD CFG3" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A104030" Bits="32" Name="PAD CFG4" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A104034" Bits="32" Name="PAD CFG5" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A104038" Bits="32" Name="PAD CFG6" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A10403C" Bits="32" Name="PAD CFG7" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A104040" Bits="32" Name="PAD CFG8" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A104044" Bits="32" Name="PAD CFG9" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A104048" Bits="32" Name="PAD CFG10" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A10404C" Bits="32" Name="PAD CFG11" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A104050" Bits="32" Name="PAD CFG12" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A104054" Bits="32" Name="PAD CFG13" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A104058" Bits="32" Name="PAD CFG14" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    <Csr Address="0x1A10405C" Bits="32" Name="PAD CFG15" Description="These 16 registers can be used for ASIC targets to configure pads, e.g. pull up, pull down values." />
+    0x1A104074;JTAG Register;"Contains the value of the input from the JTAG; Can be used to write 8bit in the JTAG output register.";;;
+    <Csr Address="0x1A1040A0" Bits="32" Name="Core Status" Description="Contains the status of the system for testing/verification purposes like End Of Computation." />
+    <Csr Address="0x1A1040C0" Bits="32" Name="Core Status" Description="Contains the status of the system for testing/verification purposes like End Of Computation (read-only)." />
+    <Csr Address="0x1A1040C8" Bits="32" Name="FLL Clock Select" Description="This register contains whether the system clock is coming from the FLL or the FLL is bypassed. It is a read-only register by the core but it can be written via JTAG." />
+  </Device>
+  <Device Name="Advanced Timer">
+    <Csr Address="0x1A105000" Bits="32" Name="T0_CMD" Description=" ADV_TIMER0 command register." />
+    <Csr Address="0x1A105004" Bits="32" Name="T0_CONFIG" Description=" ADV_TIMER0 configuration register." />
+    <Csr Address="0x1A105008" Bits="32" Name="T0_THRESHOLD" Description=" ADV_TIMER0 threshold configuration register." />
+    <Csr Address="0x1A10500C" Bits="32" Name="T0_TH_CHANNEL0" Description=" ADV_TIMER0 channel 0 threshold configuration register." />
+    <Csr Address="0x1A105010" Bits="32" Name="T0_TH_CHANNEL1" Description=" ADV_TIMER0 channel 1 threshold configuration register." />
+    <Csr Address="0x1A105014" Bits="32" Name="T0_TH_CHANNEL2" Description=" ADV_TIMER0 channel 2 threshold configuration register." />
+    <Csr Address="0x1A105018" Bits="32" Name="T0_TH_CHANNEL3" Description=" ADV_TIMER0 channel 3 threshold configuration register." />
+    <Csr Address="0x1A10502C" Bits="32" Name="T0_COUNTER" Description=" ADV_TIMER0 counter register." />
+    <Csr Address="0x1A105040" Bits="32" Name="T1_CMD" Description=" ADV_TIMER1 command register." />
+    <Csr Address="0x1A105044" Bits="32" Name="T1_CONFIG" Description=" ADV_TIMER1 configuration register." />
+    <Csr Address="0x1A105048" Bits="32" Name="T1_THRESHOLD" Description=" ADV_TIMER1 threshold configuration register." />
+    <Csr Address="0x1A10504C" Bits="32" Name="T1_TH_CHANNEL0" Description=" ADV_TIMER1 channel 0 threshold configuration register." />
+    <Csr Address="0x1A105050" Bits="32" Name="T1_TH_CHANNEL1" Description=" ADV_TIMER1 channel 1 threshold configuration register." />
+    <Csr Address="0x1A105054" Bits="32" Name="T1_TH_CHANNEL2" Description=" ADV_TIMER1 channel 2 threshold configuration register." />
+    <Csr Address="0x1A105058" Bits="32" Name="T1_TH_CHANNEL3" Description=" ADV_TIMER1 channel 3 threshold configuration register." />
+    <Csr Address="0x1A10506C" Bits="32" Name="T1_COUNTER" Description=" ADV_TIMER1 counter register." />
+    <Csr Address="0x1A105080" Bits="32" Name="T2_CMD" Description=" ADV_TIMER2 command register." />
+    <Csr Address="0x1A105084" Bits="32" Name="T2_CONFIG" Description=" ADV_TIMER2 configuration register." />
+    <Csr Address="0x1A105088" Bits="32" Name="T2_THRESHOLD" Description=" ADV_TIMER2 threshold configuration register." />
+    <Csr Address="0x1A10508C" Bits="32" Name="T2_TH_CHANNEL0" Description=" ADV_TIMER2 channel 0 threshold configuration register." />
+    <Csr Address="0x1A105090" Bits="32" Name="T2_TH_CHANNEL1" Description=" ADV_TIMER2 channel 1 threshold configuration register." />
+    <Csr Address="0x1A105094" Bits="32" Name="T2_TH_CHANNEL2" Description=" ADV_TIMER2 channel 2 threshold configuration register." />
+    <Csr Address="0x1A105098" Bits="32" Name="T2_TH_CHANNEL3" Description=" ADV_TIMER2 channel 3 threshold configuration register." />
+    <Csr Address="0x1A1050AC" Bits="32" Name="T2_COUNTER" Description=" ADV_TIMER2 counter register." />
+    <Csr Address="0x1A1050C0" Bits="32" Name="T3_CMD" Description=" ADV_TIMER3 command register." />
+    <Csr Address="0x1A1050C4" Bits="32" Name="T3_CONFIG" Description=" ADV_TIMER3 configuration register." />
+    <Csr Address="0x1A1050C8" Bits="32" Name="T3_THRESHOLD" Description=" ADV_TIMER3 threshold configuration register." />
+    <Csr Address="0x1A1050CC" Bits="32" Name="T3_TH_CHANNEL0" Description=" ADV_TIMER3 channel 0 threshold configuration register." />
+    <Csr Address="0x1A1050D0" Bits="32" Name="T3_TH_CHANNEL1" Description=" ADV_TIMER3 channel 1 threshold configuration register." />
+    <Csr Address="0x1A1050D4" Bits="32" Name="T3_TH_CHANNEL2" Description=" ADV_TIMER3 channel 2 threshold configuration register." />
+    <Csr Address="0x1A1050D8" Bits="32" Name="T3_TH_CHANNEL3" Description=" ADV_TIMER3 channel 3 threshold configuration register." />
+    <Csr Address="0x1A1050EC" Bits="32" Name="T3_COUNTER" Description=" ADV_TIMER3 counter register." />
+    <Csr Address="0x1A105100" Bits="32" Name="EVENT_CFG" Description=" ADV_TIMERS events configuration register." />
+    <Csr Address="0x1A105104" Bits="32" Name="CG" Description=" ADV_TIMERS channels clock gating configuration register." />
+  </Device>
+  <Device Name="SoC Event Generator">
+    <Csr Address="0x1A106000" Bits="32" Name="SW_EVENT" Description=" SoC software events trigger register" />
+    <Csr Address="0x1A106004" Bits="32" Name="FC_MASK0" Description=" Events 0-31 dispatch mask to FC" />
+    <Csr Address="0x1A106008" Bits="32" Name="FC_MASK1" Description=" Events 32-63 dispatch mask to FC" />
+    <Csr Address="0x1A10600C" Bits="32" Name="FC_MASK2" Description=" Events 64-95 dispatch mask to FC" />
+    <Csr Address="0x1A106010" Bits="32" Name="FC_MASK3" Description=" Events 96-127 dispatch mask to FC" />
+    <Csr Address="0x1A106014" Bits="32" Name="FC_MASK4" Description=" Events 128-159 dispatch mask to FC" />
+    <Csr Address="0x1A106018" Bits="32" Name="FC_MASK5" Description=" Events 160-191 dispatch mask to FC" />
+    <Csr Address="0x1A10601C" Bits="32" Name="FC_MASK6" Description=" Events 191-223 dispatch mask to FC" />
+    <Csr Address="0x1A106020" Bits="32" Name="FC_MASK7" Description=" Events 224-255 dispatch mask to FC" />
+    <Csr Address="0x1A106044" Bits="32" Name="PR_MASK0" Description=" Events 0-31 dispatch mask to peripherals" />
+    <Csr Address="0x1A106048" Bits="32" Name="PR_MASK1" Description=" Events 32-63 dispatch mask to peripherals" />
+    <Csr Address="0x1A10604C" Bits="32" Name="PR_MASK2" Description=" Events 64-95 dispatch mask to peripherals" />
+    <Csr Address="0x1A106050" Bits="32" Name="PR_MASK3" Description=" Events 96-127 dispatch mask to peripherals" />
+    <Csr Address="0x1A106054" Bits="32" Name="PR_MASK4" Description=" Events 128-159 dispatch mask to peripherals" />
+    <Csr Address="0x1A106058" Bits="32" Name="PR_MASK5" Description=" Events 160-191 dispatch mask to peripherals" />
+    <Csr Address="0x1A10605C" Bits="32" Name="PR_MASK6" Description=" Events 191-223 dispatch mask to peripherals" />
+    <Csr Address="0x1A106060" Bits="32" Name="PR_MASK7" Description=" Events 224-255 dispatch mask to peripherals" />
+    <Csr Address="0x1A106064" Bits="32" Name="ERR0" Description=" Events 0-31 event queue overflow" />
+    <Csr Address="0x1A106068" Bits="32" Name="ERR1" Description=" Events 32-63 event queue overflow" />
+    <Csr Address="0x1A10606C" Bits="32" Name="ERR2" Description=" Events 64-95 event queue overflow" />
+    <Csr Address="0x1A106070" Bits="32" Name="ERR3" Description=" Events 96-127 event queue overflow" />
+    <Csr Address="0x1A106074" Bits="32" Name="ERR4" Description=" Events 128-159 event queue overflow" />
+    <Csr Address="0x1A106078" Bits="32" Name="ERR5" Description=" Events 160-191 event queue overflow" />
+    <Csr Address="0x1A10607C" Bits="32" Name="ERR6" Description=" Events 191-223 event queue overflow" />
+    <Csr Address="0x1A106080" Bits="32" Name="ERR7" Description=" Events 224-255 event queue overflow" />
+    <Csr Address="0x1A106084" Bits="32" Name="TIMER_HI" Description=" Trigger Timer LO of APB Timer with event" />
+    <Csr Address="0x1A106088" Bits="32" Name="TIMER_LO" Description=" Trigger Timer HI of APB Timer with event" />
+  </Device>
+  <Device Name="Event/Interrupt Unit">
+    <Csr Address="0x1A109000" Bits="32" Name="Mask" Description="This register contains the MASK (interrupt enable) for each of the 32 interrupts or events." />
+    <Csr Address="0x1A109004" Bits="32" Name="Mask Set" Description="Writing to 0x1A109004 sets the bits of the MASK register selected." />
+    <Csr Address="0x1A109008" Bits="32" Name="Mask Clear" Description="Writing to 0x1A109008 clears the bits of the MASK register selected." />
+    <Csr Address="0x1A10900C" Bits="32" Name="Interrupt" Description="This register contains the pending interrupts or events." />
+    <Csr Address="0x1A109010" Bits="32" Name="Interrupt Set" Description="Writing to 0x1A109010 sets the bits of the INT register selected." />
+    <Csr Address="0x1A109014" Bits="32" Name="Interrupt Clear" Description="Writing to 0x1A109014 clears the bits of the INT register selected." />
+    <Csr Address="0x1A109018" Bits="32" Name="Int Ack" Description="This register contains the ACK (interrupt enable) for each of the 32 interrupts or events." />
+    <Csr Address="0x1A10901C" Bits="32" Name="Int Ack Set" Description="Writing to 0x1A10901C sets the bits of the ACK register selected." />
+    <Csr Address="0x1A109020" Bits="32" Name="Int Ack Clr" Description="Writing to 0x1A109020 clears the bits of the ACK register selected." />
+    <Csr Address="0x1A109024" Bits="32" Name="FIFO Content" Description="This is a read-only register that contain the first valid value of the FIFO." />
+  </Device>
+  <Device Name="Timer">
+    <Csr Address="0x1A10B000" Bits="32" Name="CFG_LO  " Description=" Timer LoWonfiguration register" />
+    <Csr Address="0x1A10B004" Bits="32" Name="CFG_HI  " Description=" Timer High Configuration register" />
+    <Csr Address="0x1A10B008" Bits="32" Name="CNT_LO  " Description=" Timer LoWounter value register" />
+    <Csr Address="0x1A10B00C" Bits="32" Name="CNT_HI  " Description=" Timer High counter value register" />
+    <Csr Address="0x1A10B010" Bits="32" Name="CMP_LO  " Description=" Timer LoWomparator value register" />
+    <Csr Address="0x1A10B014" Bits="32" Name="CMP_HI  " Description=" Timer High comparator value register" />
+    <Csr Address="0x1A10B018" Bits="32" Name="START_LO" Description=" Start Timer LoWounting register" />
+    <Csr Address="0x1A10B01C" Bits="32" Name="START_HI" Description=" Start Timer High counting register" />
+    <Csr Address="0x1A10B020" Bits="32" Name="RESET_LO" Description=" Reset Timer LoWounter register" />
+    <Csr Address="0x1A10B024" Bits="32" Name="RESET_HI" Description=" Reset Timer High counter register" />
+  </Device>
+  <!-- <Device Name="HWPE">
+    <MemoryRegion From="0x1A10C000" To="0x1A10EFFF" Name="" Type="RAM" />
+  </Device>
+  <Device Name="Stdout">
+    <MemoryRegion From="0x1A10F000" To="0x1A10FFFF" Name="" Type="RAM" />
+  </Device> -->
+
+  <MemoryRegion From="0x1C000000" To="0x1C07FFFF" Name="Memory" Type="RAM" />
+
+</IsaSubset>

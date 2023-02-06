@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="D-mode">
+  <!-- Privileged ISA (Debug) - According to Privileged Spec. Version 20190608-Priv-MSU-Ratified -->
+
+  <!-- Debug/Trace Registers (shared with Debug Mode) -->
+  <Csr Number="0x7A0" Access="RW" Name="tselect" Description="Debug/Trace trigger register select" />
+  <Csr Number="0x7A1" Access="RW" Name="tdata1" Description="First Debug/Trace trigger data register" />
+  <Csr Number="0x7A2" Access="RW" Name="tdata2" Description="Second Debug/Trace trigger data register" />
+  <Csr Number="0x7A3" Access="RW" Name="tdata3" Description="Third Debug/Trace trigger data register" />
+
+  <!-- Debug Mode Registers -->
+  <Csr Number="0x7B0" Access="RW" Name="dcsr" Description="Debug control and status register" />
+  <Csr Number="0x7B1" Access="RW" Name="dpc" Description="Debug PC" />
+  <Csr Number="0x7B2" Access="RW" Name="dscratch0" Description="Debug scratch register" />
+</IsaSubset>

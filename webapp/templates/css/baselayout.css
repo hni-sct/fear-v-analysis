@@ -1,0 +1,184 @@
+/* Global settings */
+html, body *
+{
+	font-family: Arial;
+	box-sizing: border-box;
+}
+*, ::before, ::after { 
+	box-sizing: inherit; 
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0px;
+}
+
+/* Header and footer */
+header, footer {
+	position: fixed !important;
+	left: 0px;
+	right: 0px;
+	margin: 0px;
+	padding-right: 25px;
+	text-align: right;
+	
+	color: {{ color.white }};
+	background-color: {{ color.grey_dark }};
+}
+header {
+	top:0px;
+	height: 50px;
+	line-height: 50px;
+	
+	font-size: 1.5em;
+	font-weight: bold;
+}
+footer {
+	bottom: 0px;
+	height: 30px;
+	line-height: 30px;
+}
+
+/* Section, Nav, Content */
+section {
+	width: 1152px;
+	padding: 0px 3px 0px 3px;
+	overflow-x: auto;
+	margin-left: -451px;
+}
+section > div, 
+nav > div {
+	border-color: {{ color.grey_medium }};
+	border-style: solid;
+	border-width: 1px;
+	border-collapse:collapse;
+}
+nav, section, .common_content {
+	position: fixed !important;
+	height: auto;
+	top:55px; /* Header height + 5px */
+	bottom:35px; /* Footer height + 5px */
+	overflow-y: scroll;
+	white-space: normal;
+	left: 50%;
+}
+nav {
+	width: 250px;
+	padding: 0px 3px 0px 3px;
+	margin-left: -701px;
+}
+nav div.navitem {
+	width: 100%;
+	display:table;
+	margin-bottom: 3px;
+	padding: 2px 0px 2px 15px;
+	line-height: 1.5;
+	
+	color: {{ color.black }};
+	background-color: {{ color.grey_light }};
+}
+nav div.navitem.active {
+	color: {{ color.white }};
+	background-color: {{ color.grey_dark }};
+}
+nav div.navitem:last-child {
+	margin-bottom: 0px;
+}
+nav div.navitem > div {
+	display:table-row; 
+}
+nav div.navtext {
+	display:table-cell;
+	font-size:1.0em;
+	font-weight:bold;
+	padding-left:15px;
+}
+nav div.navlink {
+	display:table-cell;
+	font-size: 0.8em;
+	padding-left:30px;
+}
+nav div.navlink a {
+	color: inherit;
+}
+
+canvas.faultpiechart {
+	width: 200px; 
+	height: 200px; 
+	min-width: 200px; 
+	min-height: 200px; 
+	max-width: 200px; 
+	max-height: 200px;
+}
+
+div.section-block {
+	border-collapse:collapse;
+	margin-bottom:3px;
+    display:inline-block;
+    width:100%;
+}
+
+div.section-block:last-child {
+	margin-bottom:0px;
+}
+
+/* Dark header for tables, section-divs, tab-navs */
+div.section-block th, 
+div.section-block > div:first-child, 
+div.ui-tabs > .ui-tabs-nav {
+	color: {{ color.black }};
+	background-color: {{ color.grey_medium }};
+}
+div.section-block th, 
+div.section-block > div:first-child {
+	padding: 10px 35px;
+}
+div.section-block > div:first-child {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+div.section-block th {
+	text-align: right;
+}
+
+table.instruction > tbody > tr > td:first-child {
+	font-size: larger;
+	font-weight: bold;
+	min-width:145px;
+	padding: 10px 20px 10px 25px;
+	vertical-align: top;
+}
+
+table.insnfaultpiechart tr > td:first-child {
+	width: 99%;
+}
+
+div.pie-legend-number {
+	display: table-cell;
+	font-size: 0.8em;
+	text-align: center;
+	vertical-align: middle;
+	padding: 1px 4px;
+}
+
+div.pie-legend-text {
+	display: table-cell;
+	font-size: 0.8em;
+	vertical-align: middle;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.ui-tabs {
+	background-color: #EEEEEE;
+	padding: 0px;
+}
+
+.ui-tabs .ui-tabs-nav a {
+	color: {{ color.black }};
+}
+
+.ui-tabs .ui-tabs-nav .ui-tabs-active a {
+	background-color: #555555;
+	color: {{ color.white }};
+	font-weight:bold;
+}

@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="Zicsr">
+  <Instruction Opcode="0x00001073" Mask="0x0000707f" Name="CSRRW" Kind="csr" Operands="csr,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00002073" Mask="0x0000707f" Name="CSRRS" Kind="csr" Operands="csr,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00003073" Mask="0x0000707f" Name="CSRRC" Kind="csr" Operands="csr,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00005073" Mask="0x0000707f" Name="CSRRWI" Kind="csr" Operands="csr,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00006073" Mask="0x0000707f" Name="CSRRSI" Kind="csr" Operands="csr,rs1,rd" Format="I" />
+  <Instruction Opcode="0x00007073" Mask="0x0000707f" Name="CSRRCI" Kind="csr" Operands="csr,rs1,rd" Format="I" />
+</IsaSubset>

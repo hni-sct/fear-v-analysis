@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="S-mode">
+  <!-- Privileged ISA (Supervisor) - According to Privileged Spec. Version 20190608-Priv-MSU-Ratified -->
+
+  <!-- Supervisor Trap Setup -->
+  <Csr Number="0x100" Access="RW" Name="sstatus" Description="Supervisor status register" />
+  <Csr Number="0x102" Access="RW" Name="sedeleg" Description="Supervisor exception delegation register" />
+  <Csr Number="0x103" Access="RW" Name="sideleg" Description="Supervisor interrupt delegation register" />
+  <Csr Number="0x104" Access="RW" Name="sie" Description="Supervisor interrupt-enable register" />
+  <Csr Number="0x105" Access="RW" Name="stvec" Description="Supervisor trap handler base address" />
+  <Csr Number="0x106" Access="RW" Name="scounteren" Description="Supervisor counter enable" />
+
+  <!-- Supervisor Trap Handling -->
+  <Csr Number="0x140" Access="RW" Name="sscratch" Description="Scratch register for supervisor trap handlers" />
+  <Csr Number="0x141" Access="RW" Name="sepc" Description="Supervisor exception program counter" />
+  <Csr Number="0x142" Access="RW" Name="scause" Description="Supervisor trap cause" />
+  <Csr Number="0x143" Access="RW" Name="stval" Description="Supervisor bad address or instruction" />
+  <Csr Number="0x144" Access="RW" Name="sip" Description="Supervisor interrupt pending" />
+
+  <!-- Supervisor Protection and Translation -->
+  <Csr Number="0x180" Access="RW" Name="satp" Description="Supervisor address translation and protection" />
+
+  <Instruction Opcode="0x10200073" Mask="0xffffffff" Name="SRET" Kind="trap-return supervisor" Operands="" Format="R" />
+  <Instruction Opcode="0x12000073" Mask="0xfe007fff" Name="SFENCE.VMA" Kind="supervisor-memory-management supervisor" Operands="rs2,rs1" Format="R" />
+</IsaSubset>

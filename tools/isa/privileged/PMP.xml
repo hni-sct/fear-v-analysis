@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<IsaSubset Name="PMP">
+  <!-- Physical Memory Protection Unit - According to Privileged Spec. Version 20190608-Priv-MSU-Ratified -->
+
+  <!-- Machine Memory Protection -->
+  <Csr Number="0x3A0" Access="R/W" Name="pmpcfg0" Group="Machine Memory Protection" Description="Physical memory protection configuration" Qemu="CPURISCVState.pmp_state.pmp[0..3].cfg_reg" />
+  <Csr Number="0x3A1" Access="R/W" Name="pmpcfg1" Group="Machine Memory Protection" Description="Physical memory protection configuration" Qemu="CPURISCVState.pmp_state.pmp[4..7].cfg_reg" />
+  <Csr Number="0x3A2" Access="R/W" Name="pmpcfg2" Group="Machine Memory Protection" Description="Physical memory protection configuration" Qemu="CPURISCVState.pmp_state.pmp[8..11].cfg_reg" />
+  <Csr Number="0x3A3" Access="R/W" Name="pmpcfg3" Group="Machine Memory Protection" Description="Physical memory protection configuration" Qemu="CPURISCVState.pmp_state.pmp[12..15].cfg_reg" />
+  <Csr Number="0x3B0" Access="R/W" Name="pmpaddr0" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[0].addr_reg" />
+  <Csr Number="0x3B1" Access="R/W" Name="pmpaddr1" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[1].addr_reg" />
+  <Csr Number="0x3B2" Access="R/W" Name="pmpaddr2" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[2].addr_reg" />
+  <Csr Number="0x3B3" Access="R/W" Name="pmpaddr3" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[3].addr_reg" />
+  <Csr Number="0x3B4" Access="R/W" Name="pmpaddr4" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[4].addr_reg" />
+  <Csr Number="0x3B5" Access="R/W" Name="pmpaddr5" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[5].addr_reg" />
+  <Csr Number="0x3B6" Access="R/W" Name="pmpaddr6" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[6].addr_reg" />
+  <Csr Number="0x3B7" Access="R/W" Name="pmpaddr7" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[7].addr_reg" />
+  <Csr Number="0x3B8" Access="R/W" Name="pmpaddr8" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[8].addr_reg" />
+  <Csr Number="0x3B9" Access="R/W" Name="pmpaddr9" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[9].addr_reg" />
+  <Csr Number="0x3BA" Access="R/W" Name="pmpaddr10" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[10].addr_reg" />
+  <Csr Number="0x3BB" Access="R/W" Name="pmpaddr11" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[11].addr_reg" />
+  <Csr Number="0x3BC" Access="R/W" Name="pmpaddr12" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[12].addr_reg" />
+  <Csr Number="0x3BD" Access="R/W" Name="pmpaddr13" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[13].addr_reg" />
+  <Csr Number="0x3BE" Access="R/W" Name="pmpaddr14" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[14].addr_reg" />
+  <Csr Number="0x3BF" Access="R/W" Name="pmpaddr15" Group="Machine Memory Protection" Description="Physical memory protection address register" Qemu="CPURISCVState.pmp_state.pmp[15].addr_reg" />
+  
+</IsaSubset>
